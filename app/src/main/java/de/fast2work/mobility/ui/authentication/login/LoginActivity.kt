@@ -31,10 +31,12 @@ import de.fast2work.mobility.data.request.StaticPageReq
 import de.fast2work.mobility.databinding.ActivityLoginBinding
 import de.fast2work.mobility.ui.authentication.forgetPassword.ForgetPasswordActivity
 import de.fast2work.mobility.ui.authentication.signup.SignUpActivity
+import de.fast2work.mobility.ui.authentication.url.TenantLoginActivity
 import de.fast2work.mobility.ui.authentication.verifyotp.VerifyOtpActivity
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingActivity
 import de.fast2work.mobility.ui.dashboard.DashboardActivity
+import de.fast2work.mobility.ui.sidemenu.staticpage.StaticPageActivity
 import de.fast2work.mobility.utility.customview.AsteriskPasswordTransformationMethod
 import de.fast2work.mobility.utility.customview.toolbar.ToolbarConfig
 import de.fast2work.mobility.utility.extension.CustomTypefaceSpan
@@ -148,7 +150,9 @@ class LoginActivity :
 
     private fun redirectToTenantLoginActivity() {
         BaseApplication.tenantSharedPreference.clearAll()
-
+        val intent = Intent(this, TenantLoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     /**
@@ -187,11 +191,11 @@ class LoginActivity :
             }
             btnLogin.setOnClickListener {
                 if (isValid()) {
-                    /*viewModel.callLoginApi(
+                    viewModel.callLoginApi(
                         telEmail.text.toString(),
                         telPassword.text.toString(),
                         getAndroidDeviceId()
-                    )*/
+                    )
                 }
             }
             tvForgot.setOnClickListener {
@@ -290,11 +294,21 @@ class LoginActivity :
                     override fun onClick(p0: View) {
                         when (portion) {
                             getString(R.string.terms_of_use) -> {
-
+                                startActivity(
+                                    StaticPageActivity.newInstance(
+                                        this@LoginActivity,
+                                        StaticPageReq.TERMSOFUSE
+                                    )
+                                )
                             }
 
                             getString(R.string.title_privacy_policy) -> {
-
+                                startActivity(
+                                    StaticPageActivity.newInstance(
+                                        this@LoginActivity,
+                                        StaticPageReq.PRIVACYPOLICY
+                                    )
+                                )
                             }
 
                         }

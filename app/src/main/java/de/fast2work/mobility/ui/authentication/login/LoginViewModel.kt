@@ -41,7 +41,7 @@ class LoginViewModel @Inject constructor(private val authenticationRepo: Authent
      * @param email
      * @param password
      */
- /*   fun callLoginApi(email: String, password: String, deviceId:String) {
+    fun callLoginApi(email: String, password: String, deviceId:String) {
         viewModelScope.launch {
             val param = LoginRequest().apply {
                 this.email = email
@@ -86,7 +86,7 @@ class LoginViewModel @Inject constructor(private val authenticationRepo: Authent
                 errorLiveData.postValue(it)
             })
         }
-    }*/
+    }
 
     /**
      * This function contains code for callAppVersionApi

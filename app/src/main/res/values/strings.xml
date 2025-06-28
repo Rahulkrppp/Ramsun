@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ramsun</string>
+    <string name="app_name">f2w Budget</string>
     <string name="text">Hello World</string>
     <string name="welcome">Welcome</string>
     <string name="email_address">Email address</string>
@@ -592,5 +592,4 @@
     <string name="additional_attchement">Additional Attchement</string>
     <string name="add_journey">Add Journey</string>
     <string name="are_you_sure_you_want_to_reset_the_data_for_the_selected_day_all_data_entered_will_be_permanently_cleared_do_you_want_to_proceed">Are you sure you want to reset the data for the selected day? All data entered will be permanently cleared. Do you want to proceed?</string>
-    <string name="ramsun_pharmachem">Ramsun Pharmachem</string>
 </resources>

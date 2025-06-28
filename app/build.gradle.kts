@@ -66,15 +66,15 @@ android {
             dimension = "environment"
         }
         create("qa") {
-            buildConfigField("String", "BASE_URL", "\"\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.f2wdev.eu/\"")
             dimension = "environment"
         }
         create("uat") {
-            buildConfigField("String", "BASE_URL", "\"\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.f2wmobi.de/\"")
             dimension = "environment"
         }
         create("production") {
-            buildConfigField("String", "BASE_URL", "\"\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.mobi-portal.de/\"")
             dimension = "environment"
         }
     }

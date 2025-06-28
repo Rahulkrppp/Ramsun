@@ -16,6 +16,7 @@ import de.fast2work.mobility.data.eventbus.UpdateNotificationCount
 import de.fast2work.mobility.databinding.FragmentChangePasswordBinding
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingFragment
+import de.fast2work.mobility.ui.sidemenu.notification.NotificationFragment
 import de.fast2work.mobility.utility.customview.AsteriskPasswordTransformationMethod
 import de.fast2work.mobility.utility.customview.toolbar.ToolbarConfig
 import de.fast2work.mobility.utility.dialog.DialogUtil
@@ -105,7 +106,7 @@ class ChangePasswordFragment : BaseVMBindingFragment<FragmentChangePasswordBindi
             })
 
             it.ivNotification.clickWithDebounce {
-
+                pushFragment(NotificationFragment())
             }
 
             it.ivBack.clickWithDebounce {

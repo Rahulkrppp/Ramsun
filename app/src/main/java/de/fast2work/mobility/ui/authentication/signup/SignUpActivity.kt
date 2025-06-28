@@ -25,8 +25,11 @@ import de.fast2work.mobility.R
 import de.fast2work.mobility.data.request.SignUpReq
 import de.fast2work.mobility.databinding.ActivitySignUpBinding
 import de.fast2work.mobility.ui.authentication.login.LoginActivity
+import de.fast2work.mobility.ui.authentication.signup.bottom.TermAndConditionBottomSheetFragment
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingActivity
+import de.fast2work.mobility.ui.profile.bottom.CountryCodeBottomSheetFragment
+import de.fast2work.mobility.ui.sidemenu.staticpage.StaticPageFragment
 import de.fast2work.mobility.utility.customview.AsteriskPasswordTransformationMethod
 import de.fast2work.mobility.utility.customview.countrypicker.CountryPicker
 import de.fast2work.mobility.utility.customview.toolbar.ToolbarConfig
@@ -89,7 +92,10 @@ class SignUpActivity :
     @SuppressLint("SetTextI18n")
     override fun initComponents() {
         setToolbar()
-       
+        setBoldAndColorSpannable(
+            binding.tvTermsConditions,
+            getString(R.string.terms_condition_sign_up)
+        )
 
         val spannableNote = SpannableString(binding!!.tvNote.text.toString())
         val startIndex = if (BaseApplication.languageSharedPreference.getLanguagePref(EasyPref.CURRENT_LANGUAGE, "").equals("de", true)) {
@@ -107,6 +113,7 @@ class SignUpActivity :
 
         binding.tvNote.text = spannableNote
         setBoldAndColorSpannable1(binding.tvSignup, getString(R.string.login))
+        viewModel.callStaticPageApi(1)
         setThemeForView(binding.btnSignUp)
         /*binding.ivCountryCodeImageSet.setImageBitmap(
             CountryPicker.loadImageFromAssets(
@@ -186,7 +193,21 @@ class SignUpActivity :
      * This method contains openCountrySheetBottomSheet
      *
      */
-
+    private fun openCountrySheetBottomSheet() {
+        val dialog = CountryCodeBottomSheetFragment.newInstance()
+        dialog.sendClickListener = {
+            binding.ivCountryCodeImageSet.setImageBitmap(
+                CountryPicker.loadImageFromAssets(
+                    this,
+                    it.countryCode.toBlankString()
+                )
+            )
+            viewModel.countryCode = it.iso?.replace(Regex("[\\-+]"), "").toBlankString()
+            Log.e("===========", " viewModel.countryCode:: ${it.iso}")
+            //binding!!.telPhoneNo.setText(it.iso+userData?.mobileNo)
+        }
+        dialog.show(supportFragmentManager, "")
+    }
 
     private fun setToolbar() {
         binding.customToolbar.let {
@@ -315,7 +336,7 @@ class SignUpActivity :
      * This method contains code for all the setBoldAndColorSpannable
      *
      */
-    /*private fun setBoldAndColorSpannable(textView: TextView, vararg portions: String) {
+    private fun setBoldAndColorSpannable(textView: TextView, vararg portions: String) {
         val label = textView.text.toString()
         val spannableString1 = SpannableString(label)
         for (portion in portions) {
@@ -380,7 +401,7 @@ class SignUpActivity :
         }
         textView.text = spannableString1
     }
-*/
+
     private fun setBoldAndColorSpannable1(textView: TextView, vararg portions: String) {
         val label = textView.text.toString()
         val spannableString1 = SpannableString(label)

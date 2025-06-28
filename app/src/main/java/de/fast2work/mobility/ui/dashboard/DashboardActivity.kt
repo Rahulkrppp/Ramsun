@@ -50,11 +50,22 @@ import de.fast2work.mobility.data.response.TenantInfoModel
 import de.fast2work.mobility.data.response.User
 import de.fast2work.mobility.databinding.ActivityDashboardBinding
 import de.fast2work.mobility.ui.authentication.changepassword.ChangePasswordFragment
+import de.fast2work.mobility.ui.co2.CalculateCo21Fragment
+import de.fast2work.mobility.ui.co2.CalculateCo2Fragment
+import de.fast2work.mobility.ui.savingandrecpit.co2receipt.Co2ReceiptFragment
+import de.fast2work.mobility.ui.savingandrecpit.co2saving.MyCo2SavingsFragment
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseFragment
 import de.fast2work.mobility.ui.core.BaseVMBindingActivity
+import de.fast2work.mobility.ui.dticket.DTicketFragment
 import de.fast2work.mobility.ui.home.HomeFragment
-
+import de.fast2work.mobility.ui.invoice.InvoiceFragment
+import de.fast2work.mobility.ui.invoice.invoicedetails.InvoiceDetailsFragment
+import de.fast2work.mobility.ui.profile.ProfileFragment
+import de.fast2work.mobility.ui.savingandrecpit.MySavingReceiptFragment
+import de.fast2work.mobility.ui.setting.SettingFragment
+import de.fast2work.mobility.ui.sidemenu.contactus.ContactUsFragment
+import de.fast2work.mobility.ui.upload.UploadInvoiceFragment
 import de.fast2work.mobility.utility.dialog.DialogUtil
 import de.fast2work.mobility.utility.extension.getAndroidDeviceId
 import de.fast2work.mobility.utility.extension.getColorFromAttr
@@ -163,14 +174,14 @@ class DashboardActivity : BaseVMBindingActivity<ActivityDashboardBinding, DashBo
 
 
 
-   /* override fun onNewIntent(intent: Intent) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
 
         Log.e("", "onNewIntent: 000000000000000", )
         if (intent != null && intent.hasExtra(BUNDLE_PUSH_NOTIFICATION)) {
-            viewModel.pushNotification = intent.parcelable<PushNotification>(BUNDLE_PUSH_NOTIFICATION)*//*if (viewModel.pushNotification?.notificationCode != Notification.CHAT_MESSAGE) {
+            viewModel.pushNotification = intent.parcelable<PushNotification>(BUNDLE_PUSH_NOTIFICATION)/*if (viewModel.pushNotification?.notificationCode != Notification.CHAT_MESSAGE) {
                    // viewModel.callNotificationMarkAsReadApi(viewModel.pushNotification?.notificationId.toString())
-                }*//*
+                }*/
 
             if (viewModel.pushNotification != null) {
                 if (!viewModel.pushNotification!!.refType.isNullOrEmpty()) {
@@ -215,7 +226,7 @@ class DashboardActivity : BaseVMBindingActivity<ActivityDashboardBinding, DashBo
 
         }
         super.onNewIntent(intent)
-    }*/
+    }
 
     override val numberOfRootFragments: Int = 11
 
@@ -318,19 +329,19 @@ class DashboardActivity : BaseVMBindingActivity<ActivityDashboardBinding, DashBo
             }
 
             INDEX_INVOICE -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return InvoiceFragment()
             }
 
             INDEX_SETTING -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return SettingFragment()
             }
 
             INDEX_FILE -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return UploadInvoiceFragment()
             }
 
             INDEX_BTG -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return ProfileFragment()
             }
 
             /**
@@ -341,25 +352,25 @@ class DashboardActivity : BaseVMBindingActivity<ActivityDashboardBinding, DashBo
             }
 
             INDEX_SETTING_CO2 -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return SettingFragment()
             }
 
             INDEX_CENTER_CO2 -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return MySavingReceiptFragment()
             }
 
             INDEX_CONTACT_CO2 -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return ContactUsFragment()
             }
 
             INDEX_BTG_CO2 -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return ProfileFragment()
             }
             /**
              * Both
              */
             INDEX_SURVEY -> {
-                return HomeFragment.newInstance(viewModel.pushNotification)
+                return MySavingReceiptFragment()
             }
 
         }
@@ -378,7 +389,7 @@ class DashboardActivity : BaseVMBindingActivity<ActivityDashboardBinding, DashBo
             }
             bottomBar.ivFile.clickWithDebounce {
                 fragNavController.clearStack()
-               // BaseApplication.sharedPreference.setPref(UploadInvoiceFragment.IS_LOAD, true)
+                BaseApplication.sharedPreference.setPref(UploadInvoiceFragment.IS_LOAD, true)
                 selectBottomTab(INDEX_FILE)
             }
             bottomBar.cbBtg.clickWithDebounce {
@@ -400,7 +411,7 @@ class DashboardActivity : BaseVMBindingActivity<ActivityDashboardBinding, DashBo
             }
             bottomBarCo2.ivFile.clickWithDebounce {
                 fragNavController.clearStack()
-                //BaseApplication.sharedPreference.setPref(UploadInvoiceFragment.IS_LOAD, true)
+                BaseApplication.sharedPreference.setPref(UploadInvoiceFragment.IS_LOAD, true)
                 selectBottomTab(INDEX_CENTER_CO2)
             }
             bottomBarCo2.cbContactCo2.clickWithDebounce {
@@ -421,7 +432,7 @@ class DashboardActivity : BaseVMBindingActivity<ActivityDashboardBinding, DashBo
             layoutNavDrawer.clUserdata.clickWithDebounce {
                 fragNavController.clearStack()
                 showHideMenuView()
-            /*    pushFragment(ProfileFragment())*//* if (tenant?.tenantInfo?.enabledServices.equals(mobility_budget,true)){
+                pushFragment(ProfileFragment())/* if (tenant?.tenantInfo?.enabledServices.equals(mobility_budget,true)){
                     selectBottomTab(INDEX_PROFILE)
                 }else if (tenant?.tenantInfo?.enabledServices.equals(co2_management,true)){
                     selectBottomTab(INDEX_PROFILE_CO2)
@@ -469,13 +480,13 @@ class DashboardActivity : BaseVMBindingActivity<ActivityDashboardBinding, DashBo
                 } else  if (tenant?.tenantInfo?.enabledServices.equals(mobility_budget, true))  {
                     selectBottomTab(INDEX_SETTING)
                 }else{
-                   // pushFragment(SettingFragment())
+                    pushFragment(SettingFragment())
                 }
 
             }
             layoutNavDrawer.tvDTicket.clickWithDebounce {
                showHideMenuView()
-               //pushFragment(DTicketFragment())
+               pushFragment(DTicketFragment())
 //                pushFragment(MyCo2SavingsFragment())
             }
             layoutNavDrawer.tvVersion.clickWithDebounce {

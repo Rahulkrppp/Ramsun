@@ -31,13 +31,20 @@ import de.fast2work.mobility.data.response.NotificationData
 import de.fast2work.mobility.data.response.PushNotification
 import de.fast2work.mobility.data.response.User
 import de.fast2work.mobility.databinding.FragmentHomeBinding
+import de.fast2work.mobility.ui.category.CategoryFragment
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingFragment
 import de.fast2work.mobility.ui.dashboard.DashboardActivity
 import de.fast2work.mobility.ui.dashboard.INDEX_CENTER_CO2
 import de.fast2work.mobility.ui.dashboard.INDEX_CONTACT_CO2
+import de.fast2work.mobility.ui.dashboard.INDEX_INVOICE
+import de.fast2work.mobility.ui.dticket.DTicketFragment
 import de.fast2work.mobility.ui.home.adapter.BudgetManagementAdapter
 import de.fast2work.mobility.ui.home.adapter.CategoryAdapter
+import de.fast2work.mobility.ui.invoice.invoicedetails.InvoiceDetailsFragment
+import de.fast2work.mobility.ui.profile.ProfileFragment
+import de.fast2work.mobility.ui.sidemenu.notification.NotificationFragment
+import de.fast2work.mobility.ui.upload.UploadInvoiceFragment
 import de.fast2work.mobility.utility.chart.notimportant.charting.animation.Easing
 import de.fast2work.mobility.utility.chart.notimportant.charting.data.PieData
 import de.fast2work.mobility.utility.chart.notimportant.charting.data.PieDataSet
@@ -150,11 +157,11 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
             }
         }
         viewModel.budgetGroupListLiveData.observe(this) {
-            /*binding!!.llBudgetValue.isVisible=true
+            binding!!.llBudgetValue.isVisible=true
             if (it.data?.data?.isNotEmpty() == true) {
                 viewModel.categoryList.clear()
-                it.data?.data?.filter { i -> i.status.lowercase() == "active" }?.let { it1 -> viewModel.categoryList.addAll(it1) }*//* binding!!.ivNext.alpha=0.5f
-                    binding!!.ivNext.isEnabled=false*//*
+                it.data?.data?.filter { i -> i.status.lowercase() == "active" }?.let { it1 -> viewModel.categoryList.addAll(it1) }/* binding!!.ivNext.alpha=0.5f
+                    binding!!.ivNext.isEnabled=false*/
                 //binding?.ivNext?.alpha = 1.0f
                 binding!!.ivNext.isVisible = categoryAdapter?.itemCount!! > 3
                 if (viewModel.categoryList.size != 0) {
@@ -191,7 +198,7 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 binding!!.tvUnutilizedBudget.text = "€0.0"
 
             }
-            manageNotificationRedirectionIfAny()*/
+            manageNotificationRedirectionIfAny()
         }
 
         viewModel.budgetGroupInfoListLiveData.observe(this) {
@@ -222,7 +229,7 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
             activityTicket.subscriptionExpiredAt= activeTicketData?.subscriptionExpiredAt.toString()
             activityTicket.eligibleForBuy= activeTicketData?.eligibleForBuy == true
             activityTicket.status= activeTicketData?.status.toString()
-            /*BaseApplication.sharedPreference.setPref(EasyPref.activeTicket, activityTicket)
+            BaseApplication.sharedPreference.setPref(EasyPref.activeTicket, activityTicket)
             if (activeTicketData?.eligibleForBuy==true){
                 BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.DISABLE)
             }else{
@@ -241,7 +248,8 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                         BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.DISABLE)
                     }
                 }
-            }*/
+            }
+            setDTicket()
             setToolbar()
         }
     }
@@ -307,7 +315,7 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         binding!!.PieData.setRotationEnabled(false)
         binding!!.PieData.setHighlightPerTapEnabled(false)
         //initializing data
-        /*val colors = ArrayList<Int>()
+        val colors = ArrayList<Int>()
         val typeAmountMap: MutableMap<String, Int> = HashMap()
         if (budgetItem.amountInformation?.availableAmount?.toInt() ==0 && budgetItem.amountInformation?.usedAmount?.toInt() ==0 && budgetItem.amountInformation?.pendingAmount?.toInt() ==0){
             typeAmountMap["availableAmount"] =100
@@ -326,7 +334,7 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
             colors.add(Color.parseColor(budgetItem.amountInformation!!.colors!!.availableColor))
             colors.add(Color.parseColor(budgetItem.amountInformation!!.colors!!.usedColor))
             colors.add(Color.parseColor(budgetItem.amountInformation!!.colors!!.pendingColor))
-        }*/
+        }
 
 
 
@@ -336,7 +344,9 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
 
 
         //input data and fit data into pie chart entry
-
+        for (type in typeAmountMap.keys) {
+            pieEntries.add(PieEntry(typeAmountMap[type]!!.toFloat(), type))
+        }
 
 
         //collecting the entries with label name
@@ -354,7 +364,7 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         binding!!.PieData.getDescription().setEnabled(false); //
         pieDataSet.setDrawValues(false)
         //providing color list for coloring different entries
-        //pieDataSet.setColors(colors)
+        pieDataSet.setColors(colors)
 
         //grouping the data set from entry to chart
         val pieData: PieData = PieData(pieDataSet)
@@ -373,7 +383,9 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
      */
     override fun initComponents() {
 //        tenant=(BaseApplication.tenantSharedPreference.getTenantPrefModel(EasyPref.TENANT_DATA, TenantInfoModel::class.java) )
-
+        if (BaseApplication.sharedPreference.getPrefModel(USER_DATA, User::class.java)?.isProfileComplete == "0") {
+            pushFragment(ProfileFragment())
+        }
 
         if (tenantInfoData?.tenantInfo?.enabledServices.equals(LocalConfig.co2_management, true)) {
             binding!!.clLockHome.isVisible = true
@@ -395,7 +407,7 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         else null
 
 
-        //userData = BaseApplication.sharedPreference.getPrefModel(USER_DATA, User::class.java)
+        userData = BaseApplication.sharedPreference.getPrefModel(USER_DATA, User::class.java)
         setToolbar()
         if (userData?.firstName.isNullOrEmpty()) {
             binding?.tvWelcomeBack?.text = getString(R.string.welcome_, getString(R.string.user))
@@ -407,8 +419,38 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         binding!!.noData.ivNoData.imageTickTint(tenantInfoData?.brandingInfo?.primaryColor)
         binding!!.noData.ivNoDataBg.imageTickTint(tenantInfoData?.brandingInfo?.primaryColor)
 
+        setDTicket()
     }
 
+     private fun setDTicket() {
+         if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")== IConstantsIcon.PENDING){
+             binding!!.ivAddDTicket.isVisible=false
+         }else{
+
+             if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")==IConstantsIcon.ACTIVATED){
+                 binding!!.ivAddDTicket.isVisible=false
+             }else if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")==IConstantsIcon.cancelled){
+                 binding!!.ivAddDTicket.isVisible=false
+             }else{
+                 //binding!!.ivAddDTicket.isVisible = true
+             }
+             /*if (BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.ticketId.isNullOrEmpty()) {
+                 if (BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.couponId.isNullOrEmpty()) {
+                     if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")== IConstantsIcon.DISABLE){
+                         binding!!.ivAddDTicket.isVisible=true
+                     }else {
+                         binding!!.ivAddDTicket.isVisible = false
+                     }
+                 } else {
+                     binding!!.ivAddDTicket.isVisible=true
+                 }
+
+             } else {
+                 binding!!.ivAddDTicket.isVisible=false
+             }*/
+         }
+
+    }
 
     /**
      * This method contains code for all the clickListener in our app
@@ -448,7 +490,8 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 switchTab(INDEX_CONTACT_CO2)
             }
             ivAddDTicket.clickWithDebounce {
-
+                BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.DISABLE)
+                pushFragment(DTicketFragment())
             }
         }
     }
@@ -474,7 +517,7 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 toggleDrawer()
             }
             it.ivNotification.clickWithDebounce {
-
+                pushFragment(NotificationFragment())
             }
             it.ivFilterHappening.clickWithDebounce{
                 MobilityboxTicketCode(BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.ticketId.toString()).fetchTicket({ ticket->
@@ -550,6 +593,7 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 when (view.id) {
                     R.id.cl_mail -> {
                         Log.e("==========", "model: $model")
+                        pushFragment(CategoryFragment.newInstance(model, model.categoryId, viewModel.categoryTypeName, viewModel.budgetGroupId, viewModel.categoryDate))
                     }
                 }
             }
@@ -569,16 +613,19 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 when (viewModel.pushNotification!!.refType) {
                     NotificationData.INVOICE_DETAIL -> {
                         requireArguments().clear()
+                        pushFragment(InvoiceDetailsFragment.newInstance(viewModel.pushNotification?.refId!!))
                         return true
                     }
 
                     NotificationData.UPLOAD_INVOICE -> {
                         requireArguments().clear()
+                        pushFragment(UploadInvoiceFragment())
                         return true
                     }
 
                     NotificationData.INVOICE_CO2_REQUIRED -> {
                         requireArguments().clear()
+                        pushFragment(InvoiceDetailsFragment.newInstance(viewModel.pushNotification?.refId!!))
                         return true
                     }
                     NotificationData.D_TICKET ->{
@@ -616,6 +663,8 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
 
                         requireArguments().clear()
                         Handler(Looper.getMainLooper()).postDelayed({
+                            setDTicket()
+                            pushFragment(DTicketFragment())
                         }, 1000)
 
                         return true

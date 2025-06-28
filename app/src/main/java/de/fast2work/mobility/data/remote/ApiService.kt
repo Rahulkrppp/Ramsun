@@ -79,176 +79,179 @@ import retrofit2.http.QueryMap
 
 interface ApiService {
 
-    @GET("")
+    @GET("tenantApi/tenant/view/{tenantName}")
     suspend fun callGetTenantThemeApi(@Path("tenantName") tenantName: String): Response<WSObjectResponse<TenantInfoModel>>
 
-    @GET("")
+    @POST("userApi/auth/login")
     suspend fun callLoginApi(@Body params: LoginRequest): Response<WSObjectResponse<User>>
 
-    @GET("")
+    @POST("userApi/auth/verifyTwoFactorAuthCode")
     suspend fun call2FALoginApi(@Body params: Login2FAReq): Response<WSObjectResponse<User>>
-    @GET("")
+
+    @POST("analyticsApi/dashboard/recentInvoices")
     suspend fun calInvoiceListApi(@Body params: InvoiceReq): Response<WSObjectResponse<InvoiceDataList>>
 
-    @GET("")
+    @GET("analyticsApi/dashboard/budgetGroups")
     suspend fun callBudgetGroupApi(@Query("payPeriodStartMonth") payPeriodStartMonth: String): Response<WSObjectResponse<BudgetGroup>>
 
-    @GET("")
+    @GET("analyticsApi/dashboard/budgetGroupInfo")
     suspend fun callBudgetGroupInfoApi(
         @Query("payPeriodStartMonth") payPeriodStartMonth: String,
         @Query("budgetGroupId") budgetGroupId: String,
     ): Response<WSObjectResponse<BudgetGroupInfo>>
 
-    @GET("")
+    @POST("/userApi/forgotPassword/verifyMobileOtp")
     suspend fun callVerifyOtpApi(@Body params: VerifyOtpReq): Response<WSObjectResponse<VerifyMobileOtp>>
 
-    @GET("")
+    @POST("/userApi/forgotPassword/verifyEmail")
     suspend fun callForgotPasswordApi(@Body params: ForgotPasswordReq): Response<WSObjectResponse<JsonElement>>
 
-    @GET("")
+    @POST("/userApi/forgotPassword/resetMobilePassword")
     suspend fun callResetPasswordApi(@Body params: ResetPasswordReq): Response<WSObjectResponse<JsonElement>>
-    @GET("")
+    @GET("/analyticsApi/dashboard/categoryInfo")
     suspend fun callCategoryInfoApi(@Query("categoryId") categoryId: String, @Query("budgetGroupId") budgetGroupId: String,@Query("payPeriodStartMonth") payPeriodStartMonth: String)
     : Response<WSObjectResponse<CategoryInfoRes>>
 
-    @GET("")
+    @GET("/userApi/user/{userId}")
     suspend fun callGetUserProfileApi(@Path("userId") userId: String): Response<WSObjectResponse<User>>
-    @GET("")
+    @PUT("/userApi/profile/update")
     @Multipart
     suspend fun callUpdateProfileApi(@PartMap params: HashMap<String, RequestBody>,
                                      @Part image: MultipartBody.Part?): Response<WSObjectResponse<User>>
-    @GET("")
+    @GET("masterApi/category")
     suspend fun callCategoryListApi(@QueryMap params: HashMap<String,Any?>): Response<WSObjectResponse<CategoryApiResponse>>
 
-    @GET("")
+    @GET("invoiceApi/invoiceMaster/{invoiceId}")
     suspend fun callInvoiceDetailsApi(@Path("invoiceId") invoiceId: String,@Query("refType") refType: String): Response<WSObjectResponse<InvoiceDetailsApiResponse>>
 
-    @GET("")
+    @POST("/userApi/changePassword")
     suspend fun callChangePasswordApi(@Body params: ChangePasswordReq): Response<WSObjectResponse<JsonElement>>
-    @GET("")
+    @GET("/masterApi/staticpages/{pageIndex}")
     suspend fun callStaticPageApi(@Path("pageIndex") pageIndex: Int): Response<WSObjectResponse<StaticPage>>
 
-    @GET("")
+    @POST("/masterApi/tickets")
     suspend fun callContactUsdApi(@Body params: ContactUsReq): Response<WSObjectResponse<JsonElement>>
 
     @POST("/userApi/logout")
     suspend fun callLogoutApi(
         @Body params: LogoutReq,
         ): Response<WSObjectResponse<JsonElement>>
-    @GET("")
+    @GET("/masterApi/notification")
     suspend fun callNotificationListApi(): Response<WSObjectResponse<Notification>>
 
-    @GET("")
+    @PUT("/masterApi/notification")
     suspend fun callNotificationMarkAllReadApi(): Response<WSObjectResponse<JsonElement>>
 
-    @GET("")
+    @GET("masterApi/category/categorySubCategory/{userId}")
     suspend fun callCategoryCategorySubCategoryListApi(@Path("userId")userId: String): Response<WSListResponse<SelectCategoryDataItem>>
 
-    @GET("")
+    @POST("/invoiceApi/invoice/uploadInvoiceByEmployee")
     @Multipart
     suspend fun callAddInvoiceApi(@PartMap params: HashMap<String, RequestBody>, @Part image: MultipartBody.Part? ,@Part image1: ArrayList<MultipartBody.Part?>): Response<WSObjectResponse<AddInvoice>>
 
-    @GET("")
+    @PUT("/userApi/user/enableDisableNotification/{userId}")
     suspend fun callEnableDisableNotificationApi(
         @Path("userId") userId: Int?,
         @Body params: EnableDisablePushNotificationReq,
     ): Response<WSObjectResponse<Int>>
 
-    @GET("")
+    @POST("/masterApi/notification/deleteNotifications")
     suspend fun callDeleteNotificationApi(@Body params: NotificationDeleteReq): Response<WSObjectResponse<Int>>
 
-    @GET("")
+    @PUT("/masterApi/notification/{notificationId}")
     suspend fun callNotificationReadUnReadApi(
         @Path("notificationId") notificationId: Int?,
         @Body params: NotificationReadUnReadReq,
     ): Response<WSObjectResponse<NotificationReadUnread>>
 
-    @GET("")
+    @POST("userApi/fcm/createToken")
     suspend fun callCreateFCMTokenApi(
         @Body params: CreateTokenReq,
     ): Response<WSObjectResponse<JsonElement>>
 
-    @GET("")
+    @GET("masterApi/cardMaster")
     suspend fun callCardMasterApi(): Response<WSObjectResponse<CardData>>
-    @GET("")
+    
+    @POST("/masterApi/notification/getUnreadCount")
     suspend fun callNotificationCountApi(): Response<WSObjectResponse<Notification>>
 
-    @GET("")
+    @POST("/userApi/profile/deleteAccount")
     suspend fun callDeleteAccountApi(): Response<WSObjectResponse<JsonElement>>
 
-    @GET("")
+    @GET("/userApi/appVersion")
     suspend fun callAppVersionApi(@Query("appType") appType:String): Response<WSObjectResponse<AppUpdate>>
 
-    @GET("")
+    @GET("mbm_geocode")
     suspend fun callSourceDistanceApi(@Query("search") search:String ,@Query("mbm") mbm:Boolean,@Query("apikey") apikey:String): Response<Co2Source>
 
-    @GET("")
+    @GET("/analyticsApi/co2TransportTypes")
     suspend fun callModeOfTransportApi(): Response<WSListResponse<ModeOfTransport>>
 
-    @GET("")
+    @GET("/analyticsApi/co2TransportTypes/receipt")
     suspend fun callModeOfTransportReceiptApi(): Response<WSListResponse<ModeOfTransport>>
 
-    @GET("")
+    @POST("/userApi/co2Survey/storeSurvey")
     suspend fun callCo2SurveyApi(@Body params: Co2SurveryReq/* @PartMap  params: HashMap<String, RequestBody>*/): Response<WSObjectResponse<JsonElement>>
 
-    @GET("")
+    @Headers("Content-type: application/json")
+    @POST("/userApi/co2Survey/storeSurvey")
     suspend fun callCo2SurveyApiNew(@Body params: JsonObject/* @PartMap  params: HashMap<String, RequestBody>*/):
             Response<WSObjectResponse<JsonElement>>
 
 
-    @GET("")
+    @GET("/userApi/co2Survey/getUserSurveyList")
     suspend fun callGetUserSurveyApi(@Query("pageNo") pageNo:Int ,@Query("limit") limit:Int): Response<WSObjectResponse<SurveyDataList>>
 
-    @GET("")
+    @GET("/userApi/co2Survey/inProgreesSurvey")
     suspend fun callInProgressSurveyApi(): Response<WSObjectResponse<SurveyResp>>
 
-    @GET("")
+    @GET("/userApi/co2Survey/getStoredUserSurvey/{surveyId}")
     suspend fun callGetStoredUserSurveyListApi(@Path("surveyId")surveyId: Int): Response<WSObjectResponse<Co2SurveyGetDataResp>>
 
 
-    @GET("")
+    @GET("/userApi/co2Survey/getSurveyStatisticsByUserId")
     suspend fun callGetSurveyStatisticsByUserIdApi(): Response<WSListResponse<SurveyStatisticsResp>>
 
-    @GET("")
+    @GET("/userApi/co2Survey/getSurveyStatusByUserId/{surveyId}")
     suspend fun callGetSurveyStatusByUserId(@Path("surveyId")surveyId: Int): Response<WSListResponse<SurveyResp>>
 
-    @GET("")
+    @POST(BuildConfig.BASE_URL+"userApi/token/generateNewAccessToken")
     fun callGenerateNewAccessToken(@HeaderMap param: HashMap<String,String>,@Body params: HashMap<String,String>): Call<WSObjectResponse<RefreshToken>>
 
-    @GET("")
+    @POST("/userApi/profile/distanceCalculattion")
     @Multipart
     suspend fun callDistanceApi(@PartMap params: HashMap<String, RequestBody>): Response<WSObjectResponse<DistanceRes>>
 
-    @GET("")
+    @POST("/masterApi/city/list")
     suspend fun callCityListApi(
         @Body params: CityReq
     ): Response<WSObjectResponse<CityResponse>>
 
-    @GET("")
+    @POST("/invoiceApi/invoiceMaster/calculateCo2")
     suspend fun callInvoiceCalculateCo2Api(@Body params: InvoiceCalculateCo2Req): Response<WSObjectResponse<Co2CalculateRes>>
 
-    @GET("")
+    @POST("/invoiceApi/invoiceMaster/calculateCo2")
     suspend fun callInvoiceCalculateCo2FuelTypeApi(@Body params1: InvoiceFuelTypeReq): Response<WSObjectResponse<Co2CalculateRes>>
 
-    @GET("")
+    @GET("/masterApi/general/getFuelTypes")
     suspend fun callGetFuelType(): Response<WSListResponse<FuelTypeRes>>
 
-    @GET("")
+    @POST("/analyticsApi/dashboard/co2Receipts")
     suspend fun callChartCo2Api(@Body params: ChartReq): Response<WSObjectResponse<ChartRes>>
-    @GET("")
+    @GET("/userApi/dtickets/products_list")
     suspend fun callDTicketApi(): Response<WSListResponse<DTicketRes>>
 
-    @GET("")
+    @POST("/userApi/prospectEmp/createAccount")
     suspend fun callCreateAccountApi(@Body params: SignUpReq): Response<WSObjectResponse<JsonElement>>
 
 
-    @GET("")
+    @POST("ticketing/coupons/{id}/activate.json")
     suspend fun callDTicketActivatedtApi(@Path("id")surveyId: String,@Body params: DTicketActivatedReq): Response<DTicketActivatedRes>
 
-    @GET("")
+    @POST("/userApi/dtickets/create_payment_intent")
     suspend fun callDTicketCreatePaymentIntentApi(@Body params: DTicketCreatePaymentIntent): Response<WSObjectResponse<DTicketCreatePaymentRes>>
 
-    @GET("")
+    @GET("/userApi/dtickets/active_ticket_info")
     suspend fun callActiveTicketInfoUserId(): Response<WSObjectResponse<TicketInfoRes>>
 
 

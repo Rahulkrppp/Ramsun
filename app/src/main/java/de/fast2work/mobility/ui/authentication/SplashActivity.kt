@@ -11,11 +11,11 @@ import android.os.Looper
 import dagger.hilt.android.AndroidEntryPoint
 import de.fast2work.mobility.BuildConfig
 import de.fast2work.mobility.R
-import de.fast2work.mobility.UI1.login1.LoginScreen
 import de.fast2work.mobility.data.response.AppUpdate
 import de.fast2work.mobility.data.response.PushNotification
 import de.fast2work.mobility.databinding.ActivitySplashBinding
 import de.fast2work.mobility.ui.authentication.login.LoginViewModel
+import de.fast2work.mobility.ui.authentication.url.TenantLoginActivity
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingActivity
 import de.fast2work.mobility.ui.dashboard.DashboardActivity
@@ -54,11 +54,8 @@ class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginViewMod
      *
      */
     override fun initComponents() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            redirectToLoginActivity()
-        }, SPLASH_DURATION)
-        //setDefaultLanguage()
-        //viewModel.callAppVersionApi()
+        setDefaultLanguage()
+        viewModel.callAppVersionApi()
        // moveForward()
     }
 
@@ -95,7 +92,7 @@ class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginViewMod
      */
     private fun redirectToLoginActivity() {
         BaseApplication.tenantSharedPreference.clearAll()
-        val intent = Intent(this, LoginScreen::class.java)
+        val intent = Intent(this, TenantLoginActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -113,7 +110,9 @@ class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginViewMod
 
     override fun onResume() {
         super.onResume()
-
+        if (isFirst) {
+            viewModel.callAppVersionApi()
+        }
     }
 
     /**
