@@ -1,0 +1,456 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Mobility" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="backgroundColor">@color/background_color</item>
+        <item name="colorTextView">@color/color_text</item>
+        <item name="color_button_background_alpha_15">@color/color_primary_15</item>
+        <item name="color_button_text_alpha_80">@color/color_primary_text_80</item>
+        <item name="color_primary_alpha_25">@color/color_primary_25</item>
+        <item name="color_primary_alpha_30">@color/color_primary_30</item>
+        <item name="color_primary_alpha_5">@color/color_primary_5</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="colorBorder">@color/color_text_10</item>
+        <item name="colorEditTextBorder">@color/color_primary</item>
+        <item name="colorNavBar">@color/white</item>
+        <item name="colorSelected">@color/white</item>
+        <item name="colorUnSelected">@color/color_unSelected</item>
+        <item name="colorBgHomeBudget">@color/white</item>
+        <item name="colorBgHomeManagement">@color/color_bg_home_FAFBFD</item>
+        <item name="colorNavBarLine">@color/color_222222_20</item>
+        <item name="colorBgHomeManagementItem">@color/white</item>
+        <item name="colorBgBottomBar">@color/white</item>
+        <item name="colorBgBottomBarIconSelected">@color/color_primary</item>
+        <item name="colorBgBottomBarIconUnSelected">@color/color_222222_70</item>
+        <item name="colorFilter">@color/color_222222_10</item>
+        <item name="colorBgSearch">@color/white</item>
+        <item name="colorFiliterIcon">@color/color_text</item>
+        <item name="colorBottomSheetTopLine">@color/color_222222_30</item>
+        <item name="colorTextHintFilter">@color/color_222222_70</item>
+        <item name="colorLine">@color/color_222222_15</item>
+        <item name="colorSideMenuCloseIcon">@color/color_text</item>
+        <item name="colorCardView">@color/white</item>
+        <item name="colorBgInvoiceItem">@color/color_primary_5</item>
+        <item name="colorBgUploadInvoice">@color/white</item>
+        <item name="colorEditTextBorderUploadInvoice">@color/color_222222_70</item>
+        <item name="colorTerm">@color/color_222222_80</item>
+        <item name="colorTotalBuget">@color/color_222222_70</item>
+        <item name="colorSearchHint">@color/color_222222_30</item>
+        <item name="colorCheckBoxProfileAddress">@color/color_222222_60</item>
+        <item name="colorMyCo2MovingTitle">@color/color_49C087_10_</item>
+        <item name="backgroundLockHome">@color/white</item>
+        <item name="colorBgProfile">#0D08111E</item>
+        <item name="colorBgInfo">@color/white</item>
+        <item name="colorCo2Rec">@color/color_222222_12</item>
+        <item name="colorChartYaixs">@color/color_222222_40</item>
+        <item name="colorChartFadeGrediendt">@color/white</item>
+        <item name="colorBgCo2Cal">@color/color_F2F4F9</item>
+        <item name="colorBgUnselectDay">@color/color_F5F5F5</item>
+        <item name="colorBgSemCircleChart">@color/color_D9D9D9</item>
+        <item name="colorBgDTicket">@color/color_E3FFCE</item>
+        <item name="colorBgDes">@color/color_222222_40</item>
+
+
+
+        <!-- Icons light theme -->
+        <item name="imgSplash">@drawable/ic_splash</item>
+        <item name="imgLogo">@drawable/ic_logo</item>
+        <item name="imgEmailSent">@drawable/ic_email_send</item>
+        <item name="imgPasswordChanged">@drawable/ic_successfull_done</item>
+        <item name="imgEditImageProfile">@drawable/ic_edit_profile</item>
+        <item name="imgDeleteNotificationIcon">@drawable/ic_delete</item>
+        <item name="imgToggleUnselected">@drawable/bottom_notification_selector</item>
+        <item name="imgAppUpdate">@drawable/ic_app_update_light</item>
+        <item name="imgCo2Emission">@drawable/ic_background_c02_emission</item>
+        <item name="imgCo2Distance">@drawable/ic_background_distance</item>
+        <item name="imgCo2Fitness">@drawable/ic_background_fitness</item>
+        <item name="imgCo2Micro">@drawable/ic_background_micro</item>
+        <item name="imgCo2Money">@drawable/ic_background_money</item>
+        <item name="imgLock_home">@drawable/ic_lock_home</item>
+        <item name="imgBackgroundLockHome">@drawable/ic_home_co2_background</item>
+        <item name="imgFast2WorkUrl">@drawable/ic_fast2work_logo_url</item>
+        <item name="imgCo2Eye">@drawable/ic_co2_eye</item>
+        <item name="imgPersonalInfo">@drawable/ic_personal_info</item>
+        <item name="imgCommuteDetails">@drawable/ic_commute_details</item>
+        <item name="imgAdditionalSettings">@drawable/ic_additional_settings</item>
+        <item name="imgDownArrow">@drawable/ic_arrow_down</item>
+        <item name="imgNoDataYearlyTrend">@drawable/ic_no_data_yearly_trend</item>
+        <item name="imgNoDataEmission">@drawable/ic_no_data_emission</item>
+        <item name="imgNoDataKilometers">@drawable/ic_kilometers__by_vehicle_type</item>
+        <item name="imgNoDataCo2Emission">@drawable/ic_co2_emissions_by_month___vehicle_type</item>
+        <item name="imgNoDataChatCenetr">@drawable/ic_chat_no</item>
+        <item name="imgNoDataMonthlySummary">@drawable/ic_monthly_summary</item>
+        <item name="imgNoDataCenterMonthlySummary">@drawable/ic_center_monthly_summary</item>
+        <item name="imgLockBgChart">@drawable/ic_lock_chart_background</item>
+        <item name="imgLockBgMyCo2">@drawable/ic_my_co2_lock_background</item>
+        <item name="imgKmNoData">@drawable/ic_kilo_no_data</item>
+        <item name="imgDownArrowInvoice">@drawable/ic_down_arrow_invoice</item>
+        <item name="imgUpArrowInvoice">@drawable/ic_up_arrow</item>
+        <item name="imgReActivityTicket">@drawable/ic_re_activity_ticket</item>
+        <item name="imgViewTicket">@drawable/ic_view_ticket</item>
+        <item name="imgWallet">@drawable/ic_wallet</item>
+        <item name="imgSubscription">@drawable/ic_subscription</item>
+        <item name="colorBgDTicketSideMenu">@drawable/ic_d_ticket_side</item>
+        <item name="colorBgDTicketAddButton">@drawable/ic_add_d_ticket</item>
+        <item name="colorBgDTicketViewTicket">@drawable/ic_d_ticket_view</item>
+
+
+        <item name="android:statusBarColor">@color/background_color</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+
+    </style>
+
+
+    <style name="Base.Theme.AppTheme" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="backgroundColor">@color/background_color</item>
+        <item name="colorTextView">@color/color_text</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:actionMenuTextColor">@color/color_text</item>
+        <item name="android:statusBarColor">@color/background_color</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.RemoveSplashScreenTheme" parent="@style/Theme.Mobility">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+    <style name="Theme.Mobility" parent="Base.Theme.Mobility" />
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="materialThemeOverlay">@style/CustomTextInputLayoutThemeOverlay</item>
+        <item name="shapeAppearanceOverlay">@style/CustomTextInputLayoutShapeAppearanceOverlay
+        </item>
+        <item name="android:theme">@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="hintEnabled">true</item>
+    </style>
+
+
+    <style name="CustomTextInputLayoutThemeOverlay" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="editTextStyle">@style/CustomTextInputLayoutEditTextStyle</item>
+    </style>
+
+
+    <style name="CustomTextInputLayoutEditTextStyle" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="CustomTextInputLayoutShapeAppearanceOverlay" parent="">
+        <item name="cornerSizeBottomLeft">8dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
+    </style>
+
+    <style name="ThemeOverlay.AppTheme.TextInputEditText.Outlined" parent="">
+        <item name="colorControlActivated">@color/color_primary</item>
+        <item name="colorPrimary">@color/color_primary</item>
+    </style>
+
+
+    <style name="poppins_regular_400_12">
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_regular_400_13">
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_regular_400_14">
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_regular_400_16">
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_regular_400_18">
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_regular_400_20">
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_light_300_12">
+        <item name="android:fontFamily">@font/poppins_light_300</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_light_300_14">
+        <item name="android:fontFamily">@font/poppins_light_300</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_light_300_16">
+        <item name="android:fontFamily">@font/poppins_light_300</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_medium_500_12">
+        <item name="android:fontFamily">@font/poppins_medium_500</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_medium_500_14">
+        <item name="android:fontFamily">@font/poppins_medium_500</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_medium_500_16">
+        <item name="android:fontFamily">@font/poppins_medium_500</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_medium_500_18">
+        <item name="android:fontFamily">@font/poppins_medium_500</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_medium_500_20">
+        <item name="android:fontFamily">@font/poppins_medium_500</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_semi_bold_600_14">
+        <item name="android:fontFamily">@font/poppins_semi_bold_600</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_semi_bold_600_16">
+        <item name="android:fontFamily">@font/poppins_semi_bold_600</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_semi_bold_600_18">
+        <item name="android:fontFamily">@font/poppins_semi_bold_600</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+    </style>
+    <style name="poppins_semi_bold_600_20">
+        <item name="android:fontFamily">@font/poppins_semi_bold_600</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_semi_bold_600_22">
+        <item name="android:fontFamily">@font/poppins_semi_bold_600</item>
+        <item name="android:textSize">@dimen/_22ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_semi_bold_600_24">
+        <item name="android:fontFamily">@font/poppins_semi_bold_600</item>
+        <item name="android:textSize">@dimen/_24ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_bold_700_18">
+        <item name="android:fontFamily">@font/poppins_bold_700</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_bold_700_20">
+        <item name="android:fontFamily">@font/poppins_bold_700</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_bold_700_22">
+        <item name="android:fontFamily">@font/poppins_bold_700</item>
+        <item name="android:textSize">@dimen/_22ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_bold_700_24">
+        <item name="android:fontFamily">@font/poppins_bold_700</item>
+        <item name="android:textSize">@dimen/_24ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="poppins_bold_700_26">
+        <item name="android:fontFamily">@font/poppins_bold_700</item>
+        <item name="android:textSize">@dimen/_26ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="poppins_bold_700_30">
+        <item name="android:fontFamily">@font/poppins_bold_700</item>
+        <item name="android:textSize">@dimen/_30ssp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="toolbar_title_text">
+        <item name="android:fontFamily">@font/poppins_medium_500</item>
+        <item name="android:textColor">?colorTextView</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:lines">1</item>
+        <item name="lineHeight">@dimen/_24sdp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="text_input_layout_edit" >
+        <item name="android:fontFamily">@font/poppins_medium_500</item>
+        <item name="android:textColor">?colorTextView</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/_7sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_7sdp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_7sdp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_7sdp</item>
+        <item name="hintTextAppearance">@style/poppins_regular_400_14</item>
+        <item name="android:theme">@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined_</item>
+        <item name="borderWidth">1.5dp</item>
+    </style>
+
+    <style name="ThemeOverlay.AppTheme.TextInputEditText.Outlined_" parent="">
+        <item name="colorPrimary">?colorTextView</item>
+    </style>
+
+    <style name="text_input_layout_search" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textColor">?colorTextView</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/_12sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_12sdp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_12sdp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_12sdp</item>
+        <item name="boxStrokeColor">@color/search_input_box_stroke_color</item>
+        <item name="hintTextAppearance">@style/poppins_regular_400_14</item>
+
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <style name="text_input_layout_search_edit">
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textColor">?colorTextView</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingTop">@dimen/_10sdp</item>
+        <item name="android:paddingBottom">@dimen/_10sdp</item>
+        <item name="android:paddingStart">@dimen/_10sdp</item>
+        <item name="android:paddingEnd">@dimen/_10sdp</item>
+        <item name="drawableTint">?colorTextView</item>
+        <item name="android:drawableEnd">@drawable/ic_search</item>
+        <item name="android:textColorHint">?colorTextView</item>
+    </style>
+
+    <!--<style name="button_style">
+        <item name="android:fontFamily">@font/poppins_semi_bold_600</item>
+        <item name="android:textColor">?backgroundColor</item>
+        <item name="android:textSize">@dimen/_18sdp</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="textAllCaps">false</item>
+    </style>-->
+
+    <style name="blue_button_style" parent="button_press_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/poppins_semi_bold_600</item>
+        <item name="android:paddingStart">@dimen/_20sdp</item>
+        <item name="android:paddingEnd">@dimen/_20sdp</item>
+        <item name="android:paddingTop">@dimen/_14sdp</item>
+        <item name="android:paddingBottom">@dimen/_14sdp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+
+    <style name="button_press_style">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">false</item>
+        <item name="android:foreground">?android:selectableItemBackground</item>
+    </style>
+
+    <style name="bottom_bar_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:padding">@dimen/_10sdp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:button">@null</item>
+        <item name="android:checked">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Style.DialogButton.Black" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Style.DialogButton.Red" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="divider_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?colorLine</item>
+    </style>
+
+    <style name="navigation_textview">
+        <item name="android:paddingTop">@dimen/_20sdp</item>
+        <item name="android:paddingBottom">@dimen/_20sdp</item>
+        <item name="android:paddingStart">@dimen/_20sdp</item>
+        <item name="android:paddingEnd">@dimen/_20sdp</item>
+        <item name="android:drawablePadding">@dimen/_20sdp</item>
+        <item name="android:gravity">start|center</item>
+        <item name="android:fontFamily">@font/poppins_regular_400</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textColor">?colorTextView</item>
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+    <style name="AppBottomSheetDialogTheme2" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle2</item>
+    </style>
+    <style name="CustomBottomSheetStyle2" parent="@style/CustomBottomSheetStyle">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="CalanderTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/color_primary</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/DatePickerButtonStyle</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DatePickerButtonStyle</item>
+    </style>
+    <style name="DatePickerButtonStyle" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">?editTextColor</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+</resources>

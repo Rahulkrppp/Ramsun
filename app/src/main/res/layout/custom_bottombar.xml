@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/cl_bottom_bar"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:backgroundTint="?colorBgBottomBar"
+        android:background="@drawable/bg_bottom_tab"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_home"
+            style="@style/bottom_bar_style"
+            android:drawableTop="@drawable/ic_home"
+            android:ellipsize="end"
+            android:checked="true"
+            android:lines="1"
+            android:drawablePadding="@dimen/_5sdp"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/home" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_invoice"
+            style="@style/bottom_bar_style"
+            android:drawableTop="@drawable/ic_invoice"
+            android:drawablePadding="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/invoices" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_file"
+            style="@style/bottom_bar_style"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_setting"
+            style="@style/bottom_bar_style"
+            android:button="@null"
+            android:ellipsize="end"
+            android:lines="1"
+            android:drawableTop="@drawable/ic_setting"
+            android:drawablePadding="@dimen/_5sdp"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/settings" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_survey"
+            style="@style/bottom_bar_style"
+            android:button="@null"
+            android:ellipsize="end"
+            android:lines="1"
+            android:visibility="gone"
+            android:drawableTop="@drawable/ic_survey"
+            android:drawablePadding="@dimen/_5sdp"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/center" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_btg"
+            style="@style/bottom_bar_style"
+            android:button="@null"
+            android:ellipsize="end"
+            android:lines="1"
+            android:fontFamily="@font/poppins_semi_bold_600"
+            android:textColor="#3D6DC9"
+            android:drawableTop="@drawable/ic_btg"
+            android:drawablePadding="@dimen/_5sdp"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/btg" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="?colorBgBottomBar"
+        android:background="@drawable/bg_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_file"
+            style="@style/bottom_bar_style"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_90sdp"
+            android:src="@drawable/ic_file"
+            android:tint="?colorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/iv_file"
+            android:src="@drawable/ic_file_white"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_file"
+            app:layout_constraintStart_toStartOf="@id/iv_file"
+            app:layout_constraintEnd_toEndOf="@id/iv_file"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

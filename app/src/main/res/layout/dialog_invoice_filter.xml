@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/constraint_layout"
+    android:layout_height="wrap_content"
+    android:background="?backgroundColor"
+    android:maxHeight="@dimen/_600sdp"
+    android:paddingTop="@dimen/_10sdp">
+
+    <View
+        android:id="@+id/bottomSheetStick"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_4sdp"
+        android:background="@drawable/ic_bottmsheet_stick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        style="@style/poppins_semi_bold_600_16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:text="@string/filters"
+        android:textColor="?colorTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottomSheetStick" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="?colorNavBarLine"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_400sdp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+        app:layout_constraintTop_toBottomOf="@id/divider">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/_10sdp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_date_range"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_3sdp"
+                android:backgroundTint="?colorBgSearch"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDateRange"
+                        style="@style/poppins_regular_400_14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date_range"
+                        android:textColor="?colorTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_date_range_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_down"
+                        android:tint="?colorTextView"
+                        app:layout_constraintBottom_toBottomOf="@id/tvDateRange"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvDateRange" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cv_sub_date_range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:layout_constraintTop_toBottomOf="@id/tvDateRange">
+
+                        <View
+                            android:id="@+id/divider_date_range"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:visibility="gone"
+                            android:background="@color/color_divider"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_start_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textColorHint="?colorTextHintFilter"
+                            android:layout_marginEnd="@dimen/_7sdp"
+                            android:background="@drawable/text_input_white_background_focused_shape"
+                            android:backgroundTint="?colorTextView"
+                            android:drawableEnd="@drawable/ic_calendar_black"
+                            android:drawablePadding="@dimen/_8sdp"
+                            android:drawableTint="?colorTextView"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_7sdp"
+                            android:hint="@string/start_date"
+                            android:textColor="?colorTextView"
+                            app:layout_constraintEnd_toStartOf="@id/tv_end_date"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/divider_date_range" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_end_date"
+                            android:layout_width="0dp"
+                            android:textColorHint="?colorTextHintFilter"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:backgroundTint="?colorTextView"
+                            android:background="@drawable/text_input_white_background_focused_shape"
+                            android:drawableTint="?colorTextView"
+                            android:drawableEnd="@drawable/ic_calendar_black"
+                            android:drawablePadding="@dimen/_8sdp"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_7sdp"
+                            android:hint="@string/end_date"
+                            android:textColor="?colorTextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tv_start_date"
+                            app:layout_constraintTop_toBottomOf="@id/divider_date_range" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_supplier_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_3sdp"
+                android:backgroundTint="?colorBgSearch"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/cv_date_range">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSupplierName"
+                        style="@style/poppins_regular_400_14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/supplier_name"
+                        android:textColor="?colorTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_supplier_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_down"
+                        android:tint="?colorTextView"
+                        app:layout_constraintBottom_toBottomOf="@id/tvSupplierName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvSupplierName" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cv_sub_supplier"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:layout_constraintTop_toBottomOf="@id/tvSupplierName">
+
+                        <View
+                            android:id="@+id/divider_supplier"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:visibility="gone"
+                            android:background="@color/color_divider"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_supplier_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            app:boxCornerRadiusBottomEnd="@dimen/_5sdp"
+                            app:boxCornerRadiusBottomStart="@dimen/_5sdp"
+                            app:boxCornerRadiusTopEnd="@dimen/_5sdp"
+                            app:boxCornerRadiusTopStart="@dimen/_5sdp"
+                            app:boxStrokeColor="?colorTextView"
+                            app:boxStrokeWidth="1dp"
+                            app:boxStrokeWidthFocused="1dp"
+                            app:hintEnabled="false"
+                            app:layout_constraintTop_toBottomOf="@id/divider_supplier">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tel_supllier_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/text_input_white_background_focused_shape"
+                                android:backgroundTint="?colorTextView"
+                                android:fontFamily="@font/poppins_regular_400"
+                                android:hint="@string/supplier_name_hint"
+                                android:includeFontPadding="false"
+                                android:inputType="textEmailAddress"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:paddingStart="@dimen/_10sdp"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingEnd="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
+                                android:textColor="?editTextColor"
+                                android:textColorHint="?colorTextHintFilter"
+                                android:textSize="@dimen/_14ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_3sdp"
+                android:backgroundTint="?colorBgSearch"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/cv_supplier_name">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvStatus"
+                        style="@style/poppins_regular_400_14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status"
+                        android:textColor="?colorTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_status_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_down"
+                        android:tint="?colorTextView"
+                        app:layout_constraintBottom_toBottomOf="@id/tvStatus"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvStatus" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_filter_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:layout_constraintTop_toBottomOf="@id/tvStatus"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_filters" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_categories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_3sdp"
+                android:backgroundTint="?colorBgSearch"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/cv_status">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCategories"
+                        style="@style/poppins_regular_400_14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/categories"
+                        android:textColor="?colorTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_category_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_down"
+                        android:tint="?colorTextView"
+                        app:layout_constraintBottom_toBottomOf="@id/tvCategories"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvCategories" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_filter_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:nestedScrollingEnabled="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCategories"
+                        android:clipToPadding="false"
+                        tools:itemCount="10"
+                        tools:listitem="@layout/item_filters" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+       >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_clear"
+            style="@style/blue_button_style"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_weight="1"
+            android:lines="1"
+            android:ellipsize="end"
+            android:backgroundTint="?color_button_background_alpha_15"
+            android:text="@string/clear"
+            android:textColor="?color_button_text_alpha_80"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_apply"
+            style="@style/blue_button_style"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_weight="1"
+            android:lines="1"
+            android:ellipsize="end"
+            android:text="@string/apply" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

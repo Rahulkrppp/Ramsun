@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorBgUploadInvoice"
+    tools:context=".ui.upload.UploadInvoiceFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="@dimen/_0sdp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_step_one"
+            style="@style/poppins_medium_500_16"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/color_primary"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/_1"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/view_step_one"
+            app:layout_constraintStart_toEndOf="@id/view_step_one"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <View
+            android:id="@+id/view_step_one"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="@dimen/_5sdp"
+            android:background="@color/color_primary_25"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_step_two"
+            app:layout_constraintStart_toEndOf="@id/tv_step_one"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_step_two"
+            style="@style/poppins_medium_500_16"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/color_primary_25"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/_2"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/view_step_two"
+            app:layout_constraintStart_toEndOf="@id/view_step_one"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <View
+            android:id="@+id/view_step_two"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="@dimen/_5sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/color_primary_25"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_step_three"
+            app:layout_constraintStart_toEndOf="@id/tv_step_two"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_step_three"
+            style="@style/poppins_medium_500_16"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/color_primary_25"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/_3"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_step_two"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <!-- <View
+             android:id="@+id/view_step_three"
+             android:layout_width="@dimen/_0sdp"
+             android:layout_height="@dimen/_5sdp"
+             android:layout_gravity="center_vertical"
+             android:layout_marginStart="@dimen/_10sdp"
+             android:layout_weight="1"
+             android:background="@drawable/bg_upload_invoice_line"
+             app:layout_constraintBottom_toBottomOf="parent"
+
+             app:layout_constraintStart_toEndOf="@id/tv_step_three"
+             app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0sdp"
+        app:layout_constraintTop_toBottomOf="@+id/cl_top">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?colorBgHomeManagement"
+        app:layout_constraintBottom_toTopOf="@id/ll_btn"
+        app:layout_constraintTop_toBottomOf="@+id/cl_top" />
+
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?colorBgHomeManagement"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_previous"
+            style="@style/blue_button_style"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:backgroundTint="?color_button_background_alpha_15"
+            android:text="@string/previous"
+            android:textColor="?color_button_text_alpha_80"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_next"
+            style="@style/blue_button_style"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_weight="1"
+            android:text="@string/next" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

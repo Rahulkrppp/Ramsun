@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_41sdp"
+    android:id="@+id/cl_main"
+    android:background="@drawable/bg_selector_myco2_recepit">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/_2sdp"
+        android:fontFamily="@font/poppins_medium_500"
+        android:gravity="center"
+        android:textColor="@color/selector_text_co2_rec"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Phone Name 1" />
+
+   <!-- <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_count"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:background="@drawable/circle_blue"
+        android:fontFamily="@font/roboto_medium_500"
+        android:gravity="center"
+        android:maxLength="3"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_9ssp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="99" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

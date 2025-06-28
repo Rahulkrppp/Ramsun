@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?backgroundColor">
+
+    <!-- <androidx.appcompat.widget.AppCompatImageView
+         android:id="@+id/iv_close"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginEnd="@dimen/_20sdp"
+         android:elevation="@dimen/_2sdp"
+         android:src="@drawable/ic_close"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/bottomSheetStick"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="?colorBottomSheetTopLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/ic_close_sidemenu"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_title"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            style="@style/poppins_semi_bold_600_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/choose_file"
+            android:textColor="?colorTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/attachment_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/_20sdp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+
+            <LinearLayout
+                android:id="@+id/ll_camera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:src="@drawable/ic_camera"
+                    app:tint="?colorTextView"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_camera"
+                    app:layout_constraintEnd_toEndOf="@id/iv_camera"
+                    app:layout_constraintStart_toStartOf="@id/iv_camera"
+                    app:layout_constraintTop_toTopOf="@id/iv_camera" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_camera"
+                    style="@style/poppins_regular_400_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/camera"
+                    android:textColor="?colorTextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_gallery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:tint="?colorTextView"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_gallery" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_gallery"
+                    style="@style/poppins_regular_400_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/gallery"
+                    android:textColor="?colorTextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_files"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:tint="?colorTextView"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_files" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_file"
+                    style="@style/poppins_regular_400_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/files"
+                    android:textColor="?colorTextView" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

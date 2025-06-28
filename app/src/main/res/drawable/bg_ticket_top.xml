@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="?colorBgDTicket"></solid>
+    <corners android:topLeftRadius="@dimen/_20sdp" android:topRightRadius="@dimen/_20sdp"></corners>
+
+</shape>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape
+            android:shape="rectangle">
+            <!-- Set the border color of your layout here -->
+            <stroke android:width="@dimen/_1sdp" android:color="@color/color_4D39B27B" />
+            <solid android:color="@color/color_4D39B27B" />
+            <corners android:topLeftRadius="@dimen/_20sdp" android:topRightRadius="@dimen/_20sdp"></corners>
+
+        </shape>
+    </item>
+
+    <!-- This is for border bottom but
+    you can change this according to your need -->
+    <item android:top="@dimen/_1sdp"
+        android:left="@dimen/_1sdp"
+        android:right="@dimen/_1sdp"
+        android:bottom="-2dp"
+
+        >
+        <shape
+            android:shape="rectangle">
+            <!-- Set the background color of your layout here -->
+
+            <corners android:topLeftRadius="@dimen/_20sdp" android:topRightRadius="@dimen/_20sdp"></corners>
+
+            <stroke android:width="@dimen/_1sdp" android:color="?colorBgDTicket" />
+            <solid android:color="?colorBgDTicket" />
+        </shape>
+    </item>
+
+</layer-list>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/transparent"
+    android:layout_margin="@dimen/_15sdp"
+
+    android:layout_height="wrap_content">
+
+
+
+
+        <de.fast2work.mobility.utility.customview.TicketView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tv_anchor1="@+id/cl_head"
+            app:tv_circleRadius="@dimen/_12sdp"
+            app:tv_circleSpace="2000dp"
+            app:tv_dashSize="0dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_head"
+                android:background="@drawable/bg_ticket_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_15sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_d_ticket"
+                    style="@style/poppins_semi_bold_600_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="D ticket"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_price"
+                    style="@style/poppins_regular_400_14"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:alpha="0.8"
+                    android:text="Price:"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_d_ticket" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_price_value"
+                    style="@style/poppins_semi_bold_600_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:text="299"
+                    android:textColor="#25B46F"
+                    app:layout_constraintStart_toEndOf="@id/tv_price"
+                    app:layout_constraintTop_toTopOf="@id/tv_price" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_day"
+                    style="@style/poppins_regular_400_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_2sdp"
+
+                    app:layout_constraintBottom_toBottomOf="@id/tv_price_value"
+                    app:layout_constraintStart_toEndOf="@id/tv_price_value"
+                    app:layout_constraintTop_toTopOf="@id/tv_price_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_start_date"
+                    style="@style/poppins_regular_400_14"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:alpha="0.8"
+                    android:visibility="gone"
+                    android:text="@string/start_date"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_price" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_start_date_value"
+                    style="@style/poppins_semi_bold_600_14"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:alpha="0.8"
+                    android:visibility="gone"
+                    android:text="2992dec"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_start_date"
+                    app:layout_constraintTop_toTopOf="@id/tv_start_date" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cl_head"
+                android:background="@drawable/bg_d_ticket"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_description"
+                        style="@style/poppins_regular_400_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/description"
+                        android:textColor="?colorBgDes" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_dec_value"
+                        style="@style/poppins_regular_400_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:alpha="0.8"
+                        android:text=""
+                        android:textColor="?editTextColor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </de.fast2work.mobility.utility.customview.TicketView>
+
+
+
+
+</RelativeLayout>
+<!--</androidx.cardview.widget.CardView>-->

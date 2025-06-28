@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+<ScrollView
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    android:fillViewport="true"
+    android:overScrollMode="never">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/custom_toolbar"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_welcome"
+            style="@style/poppins_bold_700_30"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/welcome"
+            android:textColor="?colorTextView"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_subtitle"
+            style="@style/poppins_regular_400_16"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:text="@string/streamline_your_mobility_expenses_with_budget_management"
+            android:textColor="?colorTextView"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_email"
+            style="@style/text_input_layout_edit"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_51sdp"
+            android:hint="@string/email_address"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tel_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_email_error"
+            style="@style/poppins_regular_400_12"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/please_enter_a_valid_email_address"
+            android:textColor="@color/color_error"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@id/tl_email"
+            app:layout_constraintStart_toStartOf="@id/tl_email"
+            app:layout_constraintTop_toBottomOf="@id/tl_email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_password"
+            style="@style/text_input_layout_edit"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:hint="@string/password"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_email_error">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tel_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:paddingEnd="@dimen/_50sdp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_password_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:paddingStart="@dimen/_0sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:tint="?colorTextView"
+            android:src="@drawable/ic_eye_off"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/tl_password"
+            app:layout_constraintEnd_toEndOf="@id/tl_password"
+            app:layout_constraintTop_toTopOf="@id/tl_password" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_password_error"
+            style="@style/poppins_regular_400_12"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/please_enter_a_valid_email_address"
+            android:textColor="@color/color_error"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@id/tl_password"
+            app:layout_constraintStart_toStartOf="@id/tl_password"
+            app:layout_constraintTop_toBottomOf="@id/tl_password" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_forgot"
+            style="@style/poppins_medium_500_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/forgot_password"
+            android:textColor="?colorSecondary"
+            app:layout_constraintEnd_toEndOf="@id/tl_password"
+            app:layout_constraintTop_toBottomOf="@id/tv_password_error" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            style="@style/blue_button_style"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:text="@string/login"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_forgot" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_signup"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#657287"
+            android:layout_marginTop="@dimen/_20sdp"
+            style="@style/poppins_regular_400_16"
+            app:layout_constraintTop_toBottomOf="@id/btn_login"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:text="@string/don_t_have_an_account_create_now"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_terms_conditions"
+        android:layout_width="@dimen/_0sdp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="?colorTerm"
+        style="@style/poppins_regular_400_16"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:text="@string/terms_use_privacy_policy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

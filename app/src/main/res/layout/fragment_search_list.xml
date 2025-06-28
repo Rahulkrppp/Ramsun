@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.co2.SearchListFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/_20sdp" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_search"
+        style="@style/text_input_layout_search"
+        android:layout_width="@dimen/_0sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/bg_fiter"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintEnd_toStartOf="@id/tv_cancel"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tel_search"
+            style="@style/text_input_layout_search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingEnd="@dimen/_35sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_clear"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:elevation="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_close_sidemenu"
+        android:visibility="gone"
+        android:tint="?colorTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/tl_search"
+        app:layout_constraintEnd_toEndOf="@+id/tl_search"
+        app:layout_constraintTop_toTopOf="@+id/tl_search"
+        tools:visibility="visible" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/poppins_regular_400_16"
+        android:textColor="?colorTextView"
+        android:text="@string/cancel"
+        android:paddingVertical="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="@id/tl_search"
+        app:layout_constraintEnd_toEndOf="@id/gl_right"
+        app:layout_constraintBottom_toBottomOf="@id/tl_search"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/gl_right"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/tl_search"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_no_data"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_search"
+        android:layout_height="@dimen/_0sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_no_data_bg"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:alpha="0.1"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="?colorPrimary"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_no_data"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:scaleType="centerInside"
+            android:elevation="@dimen/_1sdp"
+            android:src="@drawable/ic_survey_found"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/poppins_semi_bold_600_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/no_results_found"
+            android:textColor="?editTextColor"
+            app:layout_constraintTop_toBottomOf="@id/iv_no_data" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

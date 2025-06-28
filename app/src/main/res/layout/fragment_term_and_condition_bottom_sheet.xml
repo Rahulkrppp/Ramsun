@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:elevation="@dimen/_4sdp"
+            android:visibility="gone"
+            android:src="@drawable/ic_close_sidemenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/bottomSheetStick"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ic_bottmsheet_stick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/rl_header"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="@string/terms_condition"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingEnd="@dimen/_0sdp"
+                    android:textColor="?colorTextView"
+                    android:textSize="@dimen/_18ssp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_download"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_download"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_header">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_search"
+                    style="@style/text_input_layout_search"
+                    android:layout_width="@dimen/_0sdp"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tel_search"
+                        style="@style/text_input_layout_search_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/search"
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_clear"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:elevation="@dimen/_5sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_close_sidemenu"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/tl_search"
+                    app:layout_constraintEnd_toEndOf="@+id/tl_search"
+                    app:layout_constraintTop_toTopOf="@+id/tl_search"
+                    tools:visibility="visible" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_0sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_30sdp"
+                app:layout_constraintBottom_toTopOf="@id/ll_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_search" />
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_0sdp"
+                app:layout_constraintBottom_toTopOf="@id/ll_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/cl_search"
+                android:overScrollMode="never" />
+
+
+           <!-- <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_done"
+                style="@style/blue_button_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:visibility=""
+                android:text="Accept"
+                app:layout_constraintBottom_toBottomOf="parent" />-->
+
+            <LinearLayout
+                android:id="@+id/ll_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:paddingVertical="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:weightSum="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/btn_clear"
+                    style="@style/blue_button_style"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:backgroundTint="?color_button_background_alpha_15"
+                    android:text="@string/disagree"
+                    android:textColor="?color_button_text_alpha_80"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tv_done"
+                    style="@style/blue_button_style"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:text="@string/agree" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

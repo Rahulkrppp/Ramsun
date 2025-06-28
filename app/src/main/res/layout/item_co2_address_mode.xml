@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="objStops"
+            type="de.fast2work.mobility.db.ModelStops" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:background="@drawable/bg_co2_item"
+    android:paddingTop="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/_20sdp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:paddingBottom="@dimen/_30sdp"
+    android:paddingHorizontal="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_journey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Journey 1"
+        style="@style/poppins_medium_500_16"
+        android:textColor="?editTextColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_delete"
+        android:padding="@dimen/_10sdp"
+        android:tint="?colorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delt_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_start_address"
+        style="@style/text_input_layout_edit"
+        android:layout_width="@dimen/_0sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textColorHint="?colorTextView"
+        android:hint="@string/start_address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_transport_details">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tel_start_address"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={objStops.transportStartAddress}"
+            android:fontFamily="@font/poppins_regular_400"
+            android:cursorVisible="false"
+            android:focusableInTouchMode="false"
+            android:inputType="textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_stop_address"
+        style="@style/text_input_layout_edit"
+        android:layout_width="@dimen/_0sdp"
+        android:textColor="?colorTextView"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:hint="@string/stop_address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_start_address">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tel_stop_address"
+            android:layout_width="match_parent"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:layout_height="wrap_content"
+            android:text="@={objStops.transportStopAddress}"
+            android:fontFamily="@font/poppins_regular_400"
+            android:inputType="textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_means_of_transport"
+        style="@style/text_input_layout_edit"
+        android:layout_width="@dimen/_0sdp"
+        android:textColor="?colorTextView"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:hint="@string/mode_of_transport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_journey">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/meansTransport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular_400"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:text="@={objStops.transportMeans.label}"
+            android:drawableEnd="?imgDownArrow"
+            android:focusableInTouchMode="false"
+            android:inputType="textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_transport_details"
+        style="@style/text_input_layout_edit"
+        android:layout_width="@dimen/_0sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:hint="@string/transport_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_means_of_transport">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tel_transport_details"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/poppins_regular_400"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="@={objStops.transportDetails.label}"
+            android:drawableEnd="?imgDownArrow"
+            android:focusableInTouchMode="false"
+            android:inputType="textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_shared"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shared"
+        android:visibility="visible"
+        style="@style/poppins_regular_400_14"
+        android:textColor="?editTextColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/ll_shared"
+        app:layout_constraintTop_toTopOf="@id/ll_shared"/>
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/ll_shared"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_shared"
+        app:layout_constraintTop_toBottomOf="@id/tl_stop_address">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toStartOf="@id/cl_home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_working_from">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_yes"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_checkbox_unselected_circle"
+                app:layout_constraintBottom_toBottomOf="@id/tv_yes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_yes" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_yes"
+                style="@style/poppins_medium_500_14"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:lines="1"
+                android:paddingVertical="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_2sdp"
+                android:text="@string/yes"
+                android:textColor="?colorTextView"
+                android:textSize="@dimen/_13ssp"
+                app:autoSizeMaxTextSize="@dimen/_13ssp"
+                app:autoSizeMinTextSize="@dimen/_2ssp"
+                app:autoSizeStepGranularity="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_yes"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_no"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/cl_home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_working_from">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_no"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_checkbox_unselected_circle"
+                app:layout_constraintBottom_toBottomOf="@id/tv_no"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_no"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_no"
+                style="@style/poppins_medium_500_14"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:lines="1"
+                android:paddingVertical="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_2sdp"
+                android:text="@string/no"
+                android:textColor="?colorTextView"
+                android:textSize="@dimen/_13ssp"
+                app:autoSizeMaxTextSize="@dimen/_13ssp"
+                app:autoSizeMinTextSize="@dimen/_2ssp"
+                app:autoSizeStepGranularity="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_no"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_no_of_people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_of_people"
+        android:drawablePadding="@dimen/_5sdp"
+        android:drawableEnd="?imgCo2Eye"
+        style="@style/poppins_regular_400_14"
+        android:textColor="?editTextColor"
+        app:layout_constraintBottom_toBottomOf="@+id/tl_no_of_people"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tl_no_of_people"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_no_of_people"
+        android:visibility="visible"
+        style="@style/text_input_layout_edit"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toEndOf="@+id/tv_no_of_people"
+        app:layout_constraintTop_toBottomOf="@id/ll_shared">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tel_no_of_transport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="1"
+            android:gravity="center"
+            android:text="@={objStops.numberOfPeople}"
+            android:paddingHorizontal="@dimen/_0sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

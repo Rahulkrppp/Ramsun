@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_CCFFFFFF">#CCFFFFFF</color>
+    <color name="white_4DFFFFFF">#4DFFFFFF</color>
+    <color name="color_primary">#274072</color>
+    <color name="color_primary_15">#26274072</color>
+    <color name="color_primary_25">#40274072</color>
+    <color name="color_primary_30">#4D274072</color>
+    <color name="color_primary_5">#0D274072</color>
+    <color name="color_primary_40">#27407266</color>
+    <color name="color_primary_text_80">#CC274072</color>
+    <color name="color_secondary">#49C087</color>
+    <color name="color_text">#222222</color>
+    <color name="color_text_10">#1A222222</color>
+    <color name="background_color">#FFFFFF</color>
+    <color name="color_accent">#515D6F</color>
+    <color name="color_unSelected">#222222</color>
+    <color name="color_bg_home_budget">#222222</color>
+    <color name="color_bg_home_FAFBFD">#FAFBFD</color>
+    <color name="color_222222_70">#B3222222</color>
+    <color name="color_222222_80">#CC222222</color>
+    <color name="color_222222_10">#1A222222</color>
+    <color name="color_222222_20">#33222222</color>
+    <color name="color_222222_12">#1F222222</color>
+    <color name="color_222222_15">#26222222</color>
+    <color name="color_222222_30">#4D222222</color>
+    <color name="color_222222_40">#66222222</color>
+    <color name="color_222222_60">#99222222</color>
+    <color name="color_49C087_10_">#1A49C087</color>
+    <color name="color_26E2B64F_15">#26E2B64F</color>
+    <color name="color_000000_7">#12000000</color>
+    <color name="color_F2F4F9">#F2F4F9</color>
+    <color name="color_F5F5F5">#F5F5F5</color>
+    <color name="color_D9D9D9">#D9D9D9</color>
+    <color name="color_4D39B27B">#4D39B27B</color>
+    <color name="color_E3FFCE">#E3FFCE</color>
+
+    <!-- dark color -->
+
+    <color name="color_primary_dark">#274072</color>
+    <color name="color_secondary_dark">#49C087</color>
+    <color name="background_color_dark">#00050E</color>
+    <color name="color_text_dark">#EDEDED</color>
+    <color name="color_border_EDEDED_60">#99EDEDED</color>
+    <color name="color_primary_dark_15">#26274072</color>
+    <color name="color_primary_dark_text_80">#CC274072</color>
+    <color name="color_primary_dark_25">#40274072</color>
+    <color name="color_primary_dark_20">#33274072</color>
+    <color name="color_primary_dark_5">#0D274072</color>
+    <color name="color_primary_dark_30">#4D274072</color>
+    <color name="color_primary_dark_40">#66274072</color>
+    <color name="color_primary_dark_60">#99274072</color>
+    <color name="color_text_dark_10">#1AEDEDED</color>
+    <color name="color_select_and_unselected_dark">#EDEDED</color>
+    <color name="color_bg_home_00050E">#00050E</color>
+    <color name="color_EDEDE_20">#33EDEDED</color>
+    <color name="color_EDEDE_10">#1AEDEDED</color>
+    <color name="color_EDEDE_15">#26EDEDED</color>
+    <color name="color_EDEDE_40">#66EDEDED</color>
+    <color name="color_EDEDE_80">#CCEDEDED</color>
+    <color name="color_EDEDE_50">#80EDEDED</color>
+    <color name="color_EDEDE_70">#B3EDEDED</color>
+    <color name="color_EDEDE_30">#4DEDEDED</color>
+    <color name="color_EDEDE_60">#99EDEDED</color>
+    <color name="color_primary_dark_274072_40">#66274072</color>
+    <color name="color_dark_00040B">#00040B</color>
+    <color name="color_49C087_70_">#B349C087</color>
+    <color name="color_400050E_92_">#EB00050E</color>
+    <color name="color_EDEDED_12_">#1FEDEDED</color>
+    <color name="color_101D36">#101D36</color>
+
+
+
+
+
+
+    <color name="transparent">#00000000</color>
+    <color name="black_transparent">#80000000</color>
+    <color name="white_transparent">#4DFFFFFF</color>
+
+   <!-- Replace with your desired dark blue color code -->
+
+
+    <color name="color_33274072">#33274072</color>
+    <color name="color_error">#D42025</color>
+    <color name="color_F6F7FB">#F6F7FB</color>
+    <color name="color_orange">#F39200</color>
+    <color name="color_divider">#EEEEEE</color>
+    <color name="color_49E0FF">#49E0FF</color>
+    <color name="color_CBF6FF">#CBF6FF</color>
+    <color name="color_FAFBFD">#FAFBFD</color>
+    <color name="color_progress_background">#4D274072</color>
+    <color name="color_pending">#6A6A6A</color>
+    <color name="color_approved">#39B27B</color>
+    <color name="color_rejected">#D45431</color>
+    <color name="color_E08C76">#E08C76</color>
+    <color name="color_FCEDE9">#FCEDE9</color>
+    <color name="color_70DA8D">#70DA8D</color>
+    <color name="color_EAF7EE">#EAF7EE</color>
+    <color name="color_DFBB78">#DFBB78</color>
+    <color name="color_FEF7EA">#FEF7EA</color>
+
+
+    <color name="color_error_alert">#F05A2F</color>
+    <color name="color_success_alert">#4CAF50</color>
+    <color name="color_FF0000">#FF0000</color>
+    <color name="color_80A500">#80A500</color>
+    <color name="disable_box_background">#2222220D</color>
+
+
+</resources>

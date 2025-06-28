@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    tools:context=".ui.setting.SettingFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar" />
+
+    <ScrollView
+        android:id="@+id/sv_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0sdp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_70sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/cl_userdata">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_login_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:id="@+id/divider1"
+                    style="@style/divider_line"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_push_notification"
+                    style="@style/navigation_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:alpha="0.9"
+                    android:drawableStart="@drawable/ic_bell"
+                    android:drawableTint="?colorTextView"
+                    android:text="@string/push_notifications"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_notification_toggle"
+                    style="@style/bottom_bar_style"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:elevation="@dimen/_4sdp"
+                    android:src="?imgToggleUnselected"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_push_notification"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_push_notification" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        app:thumbTint="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_push_notification"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:visibility="gone"
+                        app:trackTint="@color/color_primary"
+                        app:layout_constraintTop_toTopOf="@id/tv_push_notification"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                    android:id="@+id/divider2"
+                    style="@style/divider_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_push_notification" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_contact_us"
+                    style="@style/navigation_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:drawableStart="@drawable/ic_contact_us"
+                    android:drawableTint="?colorTextView"
+                    android:text="@string/contact_us"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+                <View
+                    android:id="@+id/divider3"
+                    style="@style/divider_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_contact_us" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_about_us"
+                    style="@style/navigation_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:drawableStart="@drawable/ic_about_us"
+                    android:drawableTint="?colorTextView"
+                    android:text="@string/imprint"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider3" />
+
+                <View
+                    android:id="@+id/divider4"
+                    style="@style/divider_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_about_us" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_terms_conditions"
+                    style="@style/navigation_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:drawableStart="@drawable/ic_terms_and_cond"
+                    android:drawableTint="?colorTextView"
+                    android:text="@string/terms_of_use"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+                <View
+                    android:id="@+id/divider5"
+                    style="@style/divider_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_terms_conditions" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_privacy_policy"
+                    style="@style/navigation_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:drawableStart="@drawable/ic_privacy_policy"
+                    android:drawableTint="?colorTextView"
+                    android:text="@string/privacy_policy"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider5" />
+
+                <View
+                    android:id="@+id/divider6"
+                    style="@style/divider_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_privacy_policy" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_declaration"
+                    style="@style/navigation_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:drawableStart="@drawable/ic_declaration"
+                    android:drawableTint="?colorTextView"
+                    android:text="@string/declaration"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider6" />
+
+                <View
+                    android:id="@+id/divider10"
+                    style="@style/divider_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_declaration" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_change_language"
+                    style="@style/navigation_textview"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:drawableTint="?colorTextView"
+                    android:text="@string/change_language"
+                    app:layout_constraintStart_toEndOf="@id/iv_change_language_image"
+                    app:layout_constraintTop_toBottomOf="@id/divider10" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_change_language_image"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:alpha="0.9"
+                    android:scaleType="centerCrop"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:paddingEnd="@dimen/_0sdp"
+                    android:paddingStart="@dimen/_0sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/divider7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider10" />
+                <View
+                    android:id="@+id/divider7"
+                    style="@style/divider_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_change_language" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_delete_account"
+                    style="@style/navigation_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:drawableStart="@drawable/ic_delete_account"
+                    android:drawableTint="?colorTextView"
+                    android:text="@string/delete_account"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider7" />
+
+
+                <View
+                    android:id="@+id/divider8"
+                    style="@style/divider_line"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_delete_account" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_log_out"
+                    style="@style/navigation_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:visibility="gone"
+                    android:drawableTint="?colorTextView"
+                    android:drawableStart="@drawable/ic_logout"
+                    android:text="@string/log_out"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider8" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

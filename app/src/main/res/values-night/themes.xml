@@ -1,0 +1,134 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+<!--    <style name="Base.Theme.Mobility.Dark" parent="Theme.AppCompat.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your dark theme here. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/color_primary</item>-->
+<!--        <item name="colorSecondary">@color/color_secondary</item>-->
+<!--        <item name="backgroundColor">@color/background_color</item>-->
+<!--    </style>-->
+
+<!--    <style name="Theme.Mobility.Dark" parent="Base.Theme.Mobility.Dark"/>-->
+
+<!--&lt;!&ndash;        <item name="colorPrimary">@color/color_primary</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="colorSecondary">@color/color_secondary</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="backgroundColor">@color/background_color</item>&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+
+    <style name="Base.Theme.Mobility" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <item name="colorPrimary">@color/color_primary_dark</item>
+        <item name="colorSecondary">@color/color_secondary_dark</item>
+        <item name="backgroundColor">@color/background_color_dark</item>
+        <item name="colorTextView">@color/color_text_dark</item>
+        <item name="colorAccent">@color/color_text_dark</item>
+        <item name="color_button_background_alpha_15">@color/color_primary_dark_15</item>
+        <item name="color_button_text_alpha_80">@color/color_primary_dark_text_80</item>
+        <item name="color_primary_alpha_25">@color/color_primary_dark_25</item>
+        <item name="color_primary_alpha_5">@color/color_primary_dark_5</item>
+        <item name="colorBorder">@color/color_border_EDEDED_60</item>
+        <item name="colorEditTextBorder">@color/color_text_dark</item>
+        <item name="colorNavBar">@color/color_primary_dark_30</item>
+        <item name="colorSelected">@color/color_select_and_unselected_dark</item>
+        <item name="colorUnSelected">@color/color_select_and_unselected_dark</item>
+        <item name="colorBgHomeBudget">@color/color_primary_dark_20</item>
+        <item name="colorBgHomeManagement">@color/color_bg_home_00050E</item>
+        <item name="colorNavBarLine">@color/color_EDEDE_20</item>
+        <item name="colorBgHomeManagementItem">@color/color_primary_dark_274072_40</item>
+        <item name="colorBgBottomBar">@color/color_dark_00040B</item>
+        <item name="colorBgBottomBarIconSelected">@color/color_text_dark</item>
+        <item name="colorBgBottomBarIconUnSelected">@color/color_EDEDE_40</item>
+        <item name="colorFilter">@color/color_EDEDE_10</item>
+        <item name="colorBgSearch">@color/color_primary_dark_20</item>
+        <item name="colorFiliterIcon">@color/color_EDEDE_80</item>
+        <item name="colorBottomSheetTopLine">@color/color_EDEDE_10</item>
+        <item name="colorTextHintFilter">@color/color_EDEDE_15</item>
+        <item name="colorSideMenuCloseIcon">@color/color_EDEDE_50</item>
+        <item name="colorCardView">@color/color_primary_dark_40</item>
+        <item name="colorBgInvoiceItem">@color/color_primary_dark_40</item>
+        <item name="colorBgUploadInvoice">@color/color_bg_home_00050E</item>
+        <item name="colorEditTextBorderUploadInvoice">@color/color_primary_dark_60</item>
+        <item name="colorLine">@color/color_EDEDE_15</item>
+        <item name="colorTerm">@color/color_EDEDE_80</item>
+        <item name="colorTotalBuget">@color/color_EDEDE_70</item>
+        <item name="colorSearchHint">@color/color_EDEDE_30</item>
+        <item name="colorCheckBoxProfileAddress">@color/color_EDEDE_60</item>
+        <item name="colorMyCo2MovingTitle">@color/color_49C087_70_</item>
+        <item name="backgroundLockHome">@color/color_400050E_92_</item>
+        <item name="colorBgProfile">@color/color_primary_dark_30</item>
+        <item name="colorBgInfo">@color/color_primary_dark</item>
+        <item name="colorChartYaixs">@color/color_EDEDE_40</item>
+        <item name="colorChartFadeGrediendt">@color/color_101D36</item>
+        <item name="colorBgCo2Cal">@color/color_bg_home_00050E</item>
+        <item name="colorBgUnselectDay">@color/color_EDEDE_20</item>
+        <item name="colorBgSemCircleChart">@color/color_primary_dark_30</item>
+        <item name="colorBgDTicket">@color/color_4D39B27B</item>
+        <item name="colorBgDes">@color/color_text_dark</item>
+
+        <!-- Icons dark theme -->
+        <item name="imgSplash">@drawable/ic_splash_dark</item>
+        <item name="imgEmailSent">@drawable/ic_email_send_dark</item>
+        <item name="imgPasswordChanged">@drawable/ic_successfull_done_dark</item>
+        <item name="imgLogo">@drawable/ic_logo_dark</item>
+        <item name="imgEditImageProfile">@drawable/ic_edit_profile_dark</item>
+        <item name="imgDeleteNotificationIcon">@drawable/ic_delete_dark</item>
+        <item name="imgToggleUnselected">@drawable/bottom_notification_selector_dark</item>
+        <item name="imgAppUpdate">@drawable/ic_app_update_dark</item>
+        <item name="imgCo2Emission">@drawable/ic_background_co2_emission_dark</item>
+        <item name="imgCo2Distance">@drawable/ic_background_distance_dark</item>
+        <item name="imgCo2Fitness">@drawable/ic_background_fitness_dark</item>
+        <item name="imgCo2Micro">@drawable/ic_background_micro_dark</item>
+        <item name="imgCo2Money">@drawable/ic_background_money_dark</item>
+        <item name="imgLock_home">@drawable/ic_lock_home_dark</item>
+        <item name="imgBackgroundLockHome">@drawable/ic_home_co2_background_dark</item>
+        <item name="imgFast2WorkUrl">@drawable/ic_fast2work_logo_url_dark</item>
+        <item name="imgCo2Eye">@drawable/ic_co2_eye_dark</item>
+        <item name="imgPersonalInfo">@drawable/ic_personal_info_dark</item>
+        <item name="imgCommuteDetails">@drawable/ic_commute_details_dark</item>
+        <item name="imgAdditionalSettings">@drawable/ic_additional_settings_dark</item>
+        <item name="imgDownArrow">@drawable/ic_arrow_down_dark</item>
+        <item name="colorCo2Rec">@color/color_EDEDED_12_</item>
+        <item name="imgNoDataYearlyTrend">@drawable/ic_no_data_yearly_trend_dark</item>
+        <item name="imgNoDataEmission">@drawable/ic_no_data_emission_dark</item>
+        <item name="imgNoDataKilometers">@drawable/ic_kilometers__by_vehicle_type_dark</item>
+        <item name="imgNoDataCo2Emission">@drawable/co2_emissions_by_month___vehicle_type_dark</item>
+        <item name="imgNoDataChatCenetr">@drawable/ic_chat_no_dark</item>
+        <item name="imgNoDataMonthlySummary">@drawable/ic_monthly_summary_dark</item>
+        <item name="imgNoDataCenterMonthlySummary">@drawable/ic_center_monthly_summary_dark</item>
+        <item name="imgLockBgChart">@drawable/ic_lock_chart_background_dark</item>
+        <item name="imgLockBgMyCo2">@drawable/ic_my_co2_lock_background_dark</item>
+        <item name="imgKmNoData">@drawable/ic_kilo_no_data_dark</item>
+        <item name="android:statusBarColor">@color/color_primary_dark_30</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="imgDownArrowInvoice">@drawable/ic_down_arrow_dark</item>
+        <item name="imgUpArrowInvoice">@drawable/ic_up_arrow_dark</item>
+        <item name="imgReActivityTicket">@drawable/ic_re_activity_ticket_dark</item>
+        <item name="imgViewTicket">@drawable/ic_view_ticket_dark</item>
+        <item name="imgWallet">@drawable/ic_wallet_dark</item>
+        <item name="imgSubscription">@drawable/ic_subscription_dark</item>
+        <item name="colorBgDTicketSideMenu">@drawable/ic_d_ticket_side_dark</item>
+        <item name="colorBgDTicketAddButton">@drawable/ic_add_d_ticket_dark</item>
+        <item name="colorBgDTicketViewTicket">@drawable/ic_d_ticket_view_dark</item>
+
+    </style>
+
+    <style name="Base.Theme.AppTheme" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/color_primary_dark</item>
+        <item name="colorSecondary">@color/color_secondary_dark</item>
+        <item name="backgroundColor">@color/background_color_dark</item>
+        <item name="colorTextView">@color/color_text_dark</item>
+        <item name="colorAccent">@color/color_text_dark</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="android:statusBarColor">@color/color_primary_dark_30</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+
+    </style>
+
+
+
+
+
+
+
+
+</resources>

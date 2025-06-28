@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_marginTop="@dimen/_30sdp"
+    android:layout_marginHorizontal="@dimen/_100sdp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_radius_10"
+    android:backgroundTint="?colorBgInfo"
+    android:elevation="@dimen/_10sdp"
+    android:translationZ="@dimen/_5sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:textColor="?colorTextView"
+        android:padding="@dimen/_10sdp"
+        android:fontFamily="@font/nunito_regular_400"
+        android:text="@string/this_information_helps_us_calculate_your_co2_emissions_and_support_your_environmentally_friendly_efforts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

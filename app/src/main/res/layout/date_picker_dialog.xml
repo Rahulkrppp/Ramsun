@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="?backgroundColor"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:id="@+id/tv_title"
+        style="@style/poppins_bold_700_18"
+        android:text="@string/select_month_amp_year"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <NumberPicker
+            android:id="@+id/picker_month"
+            style="@style/poppins_bold_700_18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp">
+
+        </NumberPicker>
+
+        <NumberPicker
+            android:id="@+id/picker_year"
+            style="@style/poppins_bold_700_18"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </NumberPicker>
+
+    </LinearLayout>
+</LinearLayout>

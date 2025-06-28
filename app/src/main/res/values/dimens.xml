@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="design_default_corner_radius">24dp</dimen>
+
+    <dimen name="edit_text_underline_inset_bottom">4dp</dimen>
+    <dimen name="edit_text_underline_height">5dp</dimen>
+    <dimen name="edit_text_underline_corner_size">2dp</dimen>
+    <dimen name="edit_text_underline_elevation">2dp</dimen>
+
+    <!-- Default padding and inset to avoid shadow clipping -->
+    <dimen name="design_default_padding">12dp</dimen>
+    <dimen name="design_btn_padding_left">32dp</dimen>
+    <dimen name="design_btn_padding_right">32dp</dimen>
+    <dimen name="design_btn_padding_top">12dp</dimen>
+    <dimen name="design_btn_padding_bottom">12dp</dimen>
+    <dimen name="design_default_inset">12dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="default_space">16dp</dimen>
+    <dimen name="border_width">1dp</dimen>
+    <dimen name="no_border_width">0dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="dot_radius">2dp</dimen>
+    <dimen name="dot_spacing">3dp</dimen>
+    <dimen name="line_width">1dp</dimen>
+    <dimen name="line_spacing">6dp</dimen>
+
+</resources>

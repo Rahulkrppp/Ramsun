@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_drawer_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_navigation_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_userdata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="@dimen/_53sdp"
+                android:layout_height="@dimen/_53sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_21sdp"
+                android:elevation="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_user_name"
+                style="@style/poppins_medium_500_16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:textColor="?colorTextView"
+                app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_close"
+                app:layout_constraintStart_toEndOf="@+id/iv_profile"
+                app:layout_constraintTop_toTopOf="@+id/iv_profile"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="adaoma_kebe" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_close"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:padding="@dimen/_20sdp"
+                app:tint="?colorSideMenuCloseIcon"
+                android:src="@drawable/ic_close_sidemenu"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_user_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_user_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/sv_nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0sdp"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/_70sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_userdata">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/cl_userdata">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_login_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <View
+                        android:id="@+id/divider1"
+                        style="@style/divider_line"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_dashboard"
+                        style="@style/navigation_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:alpha="0.9"
+                        android:drawableTint="?colorTextView"
+                        android:drawableStart="@drawable/ic_dashboard"
+                        android:text="@string/dashboard"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+
+                    <View
+                        android:id="@+id/divider2"
+                        style="@style/divider_line"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_dashboard" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_invoice"
+                        style="@style/navigation_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:visibility="gone"
+                        android:drawableTint="?colorTextView"
+                        android:drawableStart="@drawable/ic_invoic"
+                        android:text="@string/invoices"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+                    <View
+                        android:id="@+id/divider3"
+                        style="@style/divider_line"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_invoice" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_change_password"
+                        style="@style/navigation_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:drawableTint="?colorTextView"
+                        android:drawableStart="@drawable/ic_change_ps"
+                        android:text="@string/change_password"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider3" />
+
+
+                    <View
+                        android:id="@+id/divider4"
+                        style="@style/divider_line"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_change_password" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_setting"
+                        style="@style/navigation_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:drawableTint="?colorTextView"
+                        android:drawableStart="@drawable/ic_setting"
+                        android:text="@string/settings"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+                    <View
+                        android:id="@+id/divider5"
+                        style="@style/divider_line"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_setting" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_d_ticket"
+                        style="@style/navigation_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:visibility="gone"
+                        android:drawableTint="?colorTextView"
+                        android:drawableStart="?colorBgDTicketSideMenu"
+                        android:text="@string/d_ticket"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider5" />
+
+                    <View
+                        android:id="@+id/divider6"
+                        style="@style/divider_line"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_d_ticket" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_log_out"
+                        style="@style/navigation_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:drawableTint="?colorTextView"
+                        android:drawableStart="@drawable/ic_logout"
+                        android:text="@string/log_out"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider6" />
+
+                    <View
+                        android:id="@+id/divider7"
+                        style="@style/divider_line"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_log_out" />
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/poppins_medium_500_14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textColor="?colorTextView"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

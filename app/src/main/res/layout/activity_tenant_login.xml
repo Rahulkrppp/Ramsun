@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    android:overScrollMode="never">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/custom_toolbar" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="@dimen/_0sdp"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            android:layout_height="wrap_content"
+            android:src="?imgFast2WorkUrl"
+            android:layout_marginTop="@dimen/_60sdp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_welcome"
+            style="@style/poppins_bold_700_30"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:gravity="center"
+            android:text="@string/the_real_benefit_amp_data_connection"
+            android:textColor="?colorTextView"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo"
+             />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_strea"
+            style="@style/poppins_regular_400_14"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:text="@string/mobility_and_sustainability_budget"
+            android:textColor="?colorTextView"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_url"
+            style="@style/text_input_layout_edit"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_51sdp"
+            android:hint="@string/enter_sub_domain_name"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_strea">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tel_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_url_error"
+            style="@style/poppins_regular_400_12"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/please_enter_a_valid_email_address"
+            android:textColor="@color/color_error"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@id/tl_url"
+            app:layout_constraintStart_toStartOf="@id/tl_url"
+            app:layout_constraintTop_toBottomOf="@id/tl_url" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_note"
+            style="@style/poppins_regular_400_12"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:text="@string/text_welcome_note"
+            android:textColor="?colorTextView"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@id/tl_url"
+            app:layout_constraintStart_toStartOf="@id/tl_url"
+            app:layout_constraintTop_toBottomOf="@id/tv_url_error" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_connect"
+            style="@style/blue_button_style"
+            android:layout_width="@dimen/_0sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:text="@string/connect"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_note" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

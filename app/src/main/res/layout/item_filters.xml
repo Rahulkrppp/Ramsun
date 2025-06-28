@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_7sdp"
+    android:id="@+id/cl_item">
+
+    <View
+        android:id="@+id/border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        android:background="?colorNavBarLine"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title"
+        style="@style/poppins_light_300_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:textColor="?colorTextView"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintEnd_toStartOf="@id/iv_checkbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/border"
+        tools:text="Approved" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_checkbox_unselected"
+        app:tint="?colorTextView"
+        app:layout_constraintBottom_toBottomOf="@id/tv_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.upload.step.UploadInvoiceStepThreeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/_15sdp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/_15sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_details_about"
+                style="@style/poppins_regular_400_16"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/details_about_the_invoice"
+                android:textColor="?colorTextView"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_receipt_for"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/bg_radius_10"
+                android:backgroundTint="?colorCardView"
+                android:elevation="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_about">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_who"
+                    style="@style/poppins_medium_500_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableTint="?colorTextView"
+
+                    android:drawableStart="@drawable/ic_receipt"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/who_paid_for_the_receipt"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/line"
+                    style="@style/divider_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_7sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_who" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/line">
+
+                    <RadioGroup
+                        android:id="@+id/rg_emp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rb_my_self"
+                            style="@style/poppins_regular_400_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="?colorSecondary"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:text="@string/my_self" />
+
+                        <View
+                            style="@style/divider_line"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rb_my_employer"
+                            style="@style/poppins_regular_400_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:text="@string/my_employer" />
+
+                        <View
+                            android:id="@+id/view"
+                            style="@style/divider_line"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rb_my_card"
+                            android:visibility="gone"
+                            style="@style/poppins_regular_400_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:text="@string/my_card" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioGroup
+                                android:id="@+id/rg_card"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+<!--                            <View-->
+<!--                                style="@style/divider_line"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="@dimen/_1sdp"-->
+<!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                            <RadioGroup-->
+<!--                                android:id="@+id/rg_card"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                                android:orientation="horizontal"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                                <androidx.appcompat.widget.AppCompatRadioButton-->
+<!--                                    android:id="@+id/rb_my_credit_card"-->
+<!--                                    style="@style/poppins_regular_400_14"-->
+<!--                                    android:layout_width="@dimen/_0sdp"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="@dimen/_56sdp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:text="@string/credit_card" />-->
+
+<!--                                <androidx.appcompat.widget.AppCompatRadioButton-->
+<!--                                    android:id="@+id/rb_my_fuel_card"-->
+<!--                                    style="@style/poppins_regular_400_14"-->
+<!--                                    android:layout_width="@dimen/_0sdp"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:text="@string/fuel_card" />-->
+
+<!--                            </RadioGroup>-->
+
+<!--                            <View-->
+<!--                                android:id="@+id/view"-->
+<!--                                style="@style/divider_line"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="@dimen/_1sdp"-->
+<!--                                app:layout_constraintTop_toBottomOf="@id/rg_card" />-->
+
+<!--                            <RadioGroup-->
+<!--                                android:id="@+id/rg_benefits_card"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                                android:orientation="horizontal"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintTop_toBottomOf="@id/view">-->
+
+<!--                                <androidx.appcompat.widget.AppCompatRadioButton-->
+<!--                                    android:id="@+id/rb_my_benefits_card"-->
+<!--                                    style="@style/poppins_regular_400_14"-->
+<!--                                    android:layout_width="@dimen/_0sdp"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="@dimen/_56sdp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:text="@string/benefits_card" />-->
+
+<!--                                <androidx.appcompat.widget.AppCompatRadioButton-->
+<!--                                    android:id="@+id/rb_my_pay_card"-->
+<!--                                    style="@style/poppins_regular_400_14"-->
+<!--                                    android:layout_width="@dimen/_0sdp"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:text="@string/pay_card" />-->
+
+<!--                            </RadioGroup>-->
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_expense"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/bg_radius_10"
+                android:backgroundTint="?colorCardView"
+                android:elevation="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/cl_receipt_for">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_expense"
+                    style="@style/poppins_medium_500_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_wallet"
+                    android:drawableTint="?colorTextView"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/what_was_the_expense_for"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <View
+                    android:id="@+id/line_expense"
+                    style="@style/divider_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_7sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_expense" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/line_expense">
+
+                    <RadioGroup
+                        android:id="@+id/rg_expense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rb_private"
+                            style="@style/poppins_regular_400_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:text="@string/private_" />
+
+                        <View
+
+                            style="@style/divider_line"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rb_business"
+                            style="@style/poppins_regular_400_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:text="@string/business" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:alpha="0.7"
+                            android:visibility="gone"
+                            android:text="@string/note_please_select_private_for_trips_to_work"
+                            android:textColor="?colorTextView" />
+
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_options"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/bg_radius_10"
+                android:backgroundTint="?colorCardView"
+                android:elevation="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/cl_expense">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_title"
+                    style="@style/poppins_medium_500_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_receipt"
+
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="?colorTextView"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/what_type_of_file_is_it"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/line2"
+                    style="@style/divider_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_7sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/line2">
+
+                    <RadioGroup
+                        android:id="@+id/rg_file_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rb_receipt"
+                            style="@style/poppins_regular_400_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:text="@string/receipt" />
+
+                        <View
+                            style="@style/divider_line"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rb_invoice"
+                            style="@style/poppins_regular_400_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:buttonTint="?colorSecondary"
+                            android:text="@string/invoice" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="match_parent"
+                            android:visibility="gone"
+                            android:layout_height="wrap_content"
+                            android:text="self_comments" />
+
+
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_power"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:background="@drawable/bg_radius_10"
+                android:backgroundTint="?colorCardView"
+                android:elevation="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/cl_options">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_power"
+                    style="@style/poppins_medium_500_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_remarks"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="?colorTextView"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tl_power"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_upload_invoice"
+                    android:fontFamily="@font/poppins_regular_400"
+
+                    android:includeFontPadding="false"
+                    android:lines="1"
+                    android:inputType="numberDecimal"
+                    android:maxLength="150"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="top"
+                    android:maxLines="5"
+                    android:textCursorDrawable="@drawable/bg_coursor_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_power"
+                    android:textColor="?editTextColor"
+                    android:textColorHint="?colorTextHintFilter"
+                    android:textSize="@dimen/_14ssp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+
+                android:id="@+id/cl_Remarks"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:background="@drawable/bg_radius_10"
+                android:backgroundTint="?colorCardView"
+                android:elevation="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/cl_power">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_remarks"
+                    style="@style/poppins_medium_500_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_remarks"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="?colorTextView"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/self_comments"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/line_remarks"
+                    style="@style/divider_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_7sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_remarks" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tl_message_here"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_upload_invoice"
+                    android:fontFamily="@font/poppins_regular_400"
+                    android:hint="@string/type_here"
+                    android:includeFontPadding="false"
+                    android:lines="5"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="150"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="top"
+                    android:maxLines="5"
+                    android:textCursorDrawable="@drawable/bg_coursor_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/line_remarks"
+                    android:textColor="?editTextColor"
+                    android:textColorHint="?colorTextHintFilter"
+                    android:textSize="@dimen/_14ssp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clAdditonalDoc"
+                android:layout_width="@dimen/_0sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:background="@drawable/bg_radius_10"
+                android:backgroundTint="?colorCardView"
+                android:elevation="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/cl_Remarks">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_additional_attachement"
+                    style="@style/poppins_medium_500_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_doc"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="?colorTextView"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/additional_attchement"
+                    android:textColor="?editTextColor"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <View
+                    android:id="@+id/line_attachment"
+                    style="@style/divider_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginHorizontal="@dimen/_7sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_additional_attachement" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_choose_file"
+                    android:layout_width="@dimen/_0sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:paddingTop="@dimen/_15sdp"
+                    android:background="@drawable/bg_upload_dash_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line_attachment">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_choose"
+                        style="@style/poppins_medium_500_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/choose_capture_a_file_to_upload"
+                        android:textColor="?colorTextView"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_choose_file"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:src="@drawable/ic_choose_file"
+                        app:tint="?colorEditTextBorder"
+                        app:layout_constraintBottom_toTopOf="@id/tv_choose"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/poppins_medium_500_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:alpha="0.4"
+                        android:gravity="center"
+                        android:text="@string/allowed_formats_npng_jpg_heic_pdf_maximum_files_size_5mb"
+                        android:textColor="?colorTextView"
+                        app:layout_constraintTop_toBottomOf="@id/tv_choose" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <ProgressBar
+                    android:id="@+id/progress_image"
+                    app:layout_constraintStart_toStartOf="@id/cl_choose_file"
+                    app:layout_constraintEnd_toEndOf="@id/cl_choose_file"
+                    app:layout_constraintTop_toTopOf="@id/cl_choose_file"
+                    android:visibility="gone"
+                    android:elevation="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/cl_choose_file"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_doc"
+                    app:layout_constraintTop_toBottomOf="@id/cl_choose_file"
+                    android:layout_width="match_parent"
+                    tools:itemCount="1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_upload_doc"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

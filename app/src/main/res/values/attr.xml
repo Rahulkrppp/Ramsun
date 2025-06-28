@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="color" name="backgroundLockHome"/>
+    <attr format="color" name="colorMyCo2MovingTitle"/>
+    <attr format="color" name="colorCheckBoxProfileAddress"/>
+    <attr format="color" name="colorSearchHint"/>
+    <attr format="color" name="colorTotalBuget"/>
+    <attr format="color" name="colorTerm"/>
+    <attr format="color" name="colorEditTextBorderUploadInvoice"/>
+    <attr format="color" name="colorBgUploadInvoice"/>
+    <attr format="color" name="colorBgInvoiceItem"/>
+    <attr format="color" name="colorCardView"/>
+    <attr format="color" name="colorSideMenuCloseIcon"/>
+    <attr format="color" name="colorLine"/>
+    <attr format="color" name="colorTextHintFilter"/>
+    <attr format="color" name="colorFiliterIcon"/>
+    <attr format="color" name="colorBottomSheetTopLine"/>
+    <attr format="color" name="colorBgSearch"/>
+    <attr format="color" name="colorFilter"/>
+    <attr format="color" name="colorBgBottomBarIconUnSelected"/>
+    <attr format="color" name="colorBgBottomBarIconSelected"/>
+    <attr format="color" name="colorBgBottomBar"/>
+    <attr format="color" name="colorBgHomeManagementItem"/>
+    <attr format="color" name="colorNavBarLine"/>
+    <attr format="color" name="colorBgHomeManagement"/>
+    <attr format="color" name="colorBgHomeBudget"/>
+    <attr format="color" name="colorUnSelected"/>
+    <attr format="color" name="colorSelected"/>
+    <attr format="color" name="colorNavBar"/>
+    <attr format="color" name="color_button_background_alpha_15"/>
+    <attr format="color" name="color_button_text_alpha_80"/>
+    <attr format="color" name="color_primary_alpha_25"/>
+    <attr format="color" name="color_primary_alpha_30"/>
+    <attr format="color" name="color_primary_alpha_5"/>
+    <attr format="color" name="colorTextView"/>
+    <attr format="color" name="colorBorder"/>
+    <attr format="reference" name="imgSplash"/>
+    <attr format="reference" name="imgEmailSent"/>
+    <attr format="reference" name="imgEditImageProfile"/>
+    <attr format="reference" name="imgDeleteNotificationIcon"/>
+    <attr format="reference" name="imgToggleUnselected"/>
+    <attr format="reference" name="imgAppUpdate"/>
+    <attr format="reference" name="imgCo2Fitness"/>
+    <attr format="reference" name="imgLock_home"/>
+    <attr format="reference" name="imgBackgroundLockHome"/>
+    <attr format="reference" name="imgCo2Money"/>
+    <attr format="reference" name="imgCo2Micro"/>
+    <attr format="reference" name="imgCo2Distance"/>
+    <attr format="reference" name="imgCo2Emission"/>
+    <attr format="reference" name="imgFast2WorkUrl"/>
+    <attr format="reference" name="imgCo2Eye"/>
+    <attr format="reference" name="imgToggleSelected"/>
+    <attr format="reference" name="imgPasswordChanged"/>
+    <attr format="reference" name="imgLogo"/>
+    <attr format="reference" name="imgPersonalInfo"/>
+    <attr format="reference" name="imgCommuteDetails"/>
+    <attr format="reference" name="imgAdditionalSettings"/>
+    <attr format="reference" name="imgDownArrow"/>
+    <attr format="reference" name="imgNoDataYearlyTrend"/>
+    <attr format="reference" name="imgNoDataEmission"/>
+    <attr format="reference" name="imgNoDataKilometers"/>
+    <attr format="reference" name="imgNoDataCo2Emission"/>
+    <attr format="reference" name="imgNoDataChatCenetr"/>
+    <attr format="reference" name="imgNoDataMonthlySummary"/>
+    <attr format="reference" name="imgNoDataCenterMonthlySummary"/>
+    <attr format="reference" name="imgLockBgChart"/>
+    <attr format="reference" name="imgLockBgMyCo2"/>
+    <attr format="reference" name="imgKmNoData"/>
+    <attr format="reference" name="imgDownArrowInvoice"/>
+    <attr format="reference" name="imgUpArrowInvoice"/>
+    <attr format="reference" name="imgReActivityTicket"/>
+    <attr format="reference" name="imgViewTicket"/>
+    <attr format="reference" name="imgWallet"/>
+    <attr format="reference" name="imgSubscription"/>
+    <attr format="color" name="colorEditTextBorder"/>
+    <attr format="color" name="colorBgProfile"/>
+    <attr format="color" name="colorBgInfo"/>
+    <attr format="color" name="colorCo2Rec"/>
+    <attr format="color" name="colorChartYaixs"/>
+    <attr format="color" name="colorChartFadeGrediendt"/>
+    <attr format="color" name="colorBgCo2Cal"/>
+    <attr format="color" name="colorBgUnselectDay"/>
+    <attr format="color" name="colorBgSemCircleChart"/>
+    <attr format="color" name="colorBgDTicket"/>
+    <attr format="color" name="colorBgDes"/>
+    <attr format="color" name="colorBgDTicketSideMenu"/>
+    <attr format="color" name="colorBgDTicketAddButton"/>
+    <attr format="color" name="colorBgDTicketViewTicket"/>
+    <declare-styleable name="CustomTheme">
+        <attr name="gifAnimViewStyle" format="reference" />
+    </declare-styleable>
+
+    <!--RecyclerView resources-->
+
+    <declare-styleable name="TextInputLayout">
+        <attr name="textInputLayoutFocusedDrawable" format="reference" />
+        <attr name="textInputLayoutUnfocusedDrawable" format="reference" />
+        <attr name="textInputLayoutDisabledDrawable" format="reference" />
+        <attr name="textInputLayoutErrorDrawable" format="reference" />
+        <attr name="avatar_bg_default" format="reference" />
+    </declare-styleable>
+
+    <!--RecyclerView resources-->
+    <declare-styleable name="CustomRecyclerView">
+        <attr name="pagination" format="boolean" />
+        <attr name="loadmore_visibility" format="boolean" />
+        <attr name="gird_span" format="integer" />
+        <attr name="list_type" />
+        <attr name="list_orientation" />
+        <attr name="loadmore_type" />
+    </declare-styleable>
+
+    <attr name="loadmore_type">
+        <enum name="bottom" value="0" />
+        <enum name="top" value="1" />
+    </attr>
+
+    <attr name="list_type">
+        <enum name="list" value="0" />
+        <enum name="grid" value="1" />
+        <enum name="staggered" value="2" />
+    </attr>
+
+    <attr name="list_orientation">
+        <enum name="vertical" value="0" />
+        <enum name="horizontal" value="1" />
+    </attr>
+
+
+    <!--RecyclerView resources-->
+    <declare-styleable name="CustomEditTextView">
+        <attr name="label" format="string" />
+        <attr name="fabIcon" format="reference" />
+        <attr name="endIcon" format="reference" />
+        <attr name="startIcon" format="reference" />
+        <attr name="isEditable" format="boolean" />
+        <attr name="showCounter" format="boolean" />
+        <attr name="infoIcon" format="reference" />
+        <attr name="infoIconShow" format="boolean" />
+        <attr name="verticalScrollBarEnabled" format="boolean" />
+        <attr name="isBgColorWhite" format="boolean" />
+        <attr name="drawablePadding" format="dimension" />
+        <attr name="lineHeight" format="dimension" />
+        <attr name="android:inputType" />
+        <attr name="android:maxLines" />
+        <attr name="android:maxLength" />
+        <attr name="android:hint" />
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="android:textColorHint" />
+        <attr name="android:textSize" />
+        <attr name="android:singleLine" />
+        <attr name="android:gravity" />
+        <attr name="android:lines" />
+        <attr name="showCountryCode" format="boolean" />
+        <attr name="counterEnabled" format="boolean" />
+
+
+    </declare-styleable>
+
+    <declare-styleable name="TicketView">
+        <attr format="reference" name="tv_anchor1"/>
+        <attr format="reference" name="tv_anchor2"/>
+
+        <attr format="color" name="tv_dashColor"/>
+        <attr format="dimension" name="tv_dashSize"/>
+        <attr format="dimension" name="tv_circleSpace"/>
+        <attr format="dimension" name="tv_circleRadius"/>
+    </declare-styleable>
+
+</resources>

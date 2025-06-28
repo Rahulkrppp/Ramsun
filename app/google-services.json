@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "371791035668",
+    "project_id": "mobility-3bce3",
+    "storage_bucket": "mobility-3bce3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371791035668:android:5a21e36aac50aebbae1601",
+        "android_client_info": {
+          "package_name": "de.fast2work.mobility"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcK_kk78N7sBuuwLSfS84iXfQWAAcO92I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

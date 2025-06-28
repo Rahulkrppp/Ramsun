@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    tools:context=".ui.invoice.InvoiceFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_search"
+        style="@style/text_input_layout_search"
+        android:layout_width="@dimen/_0sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/bg_fiter"
+        app:layout_constraintEnd_toStartOf="@id/iv_filter_invoice"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tel_search"
+            style="@style/text_input_layout_search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_clear"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:elevation="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_close_sidemenu"
+        android:visibility="gone"
+        android:tint="?colorTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/tl_search"
+        app:layout_constraintEnd_toEndOf="@+id/tl_search"
+        app:layout_constraintTop_toTopOf="@+id/tl_search"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_filter_invoice"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:adjustViewBounds="true"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_filter_"
+        android:tint="?colorFiliterIcon"
+        android:background="@drawable/bg_fiter"
+        app:layout_constraintBottom_toBottomOf="@id/tl_search"
+        app:layout_constraintEnd_toStartOf="@id/iv_legend"
+        app:layout_constraintStart_toEndOf="@id/tl_search"
+        app:layout_constraintTop_toTopOf="@id/tl_search" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_filter_count"
+        style="@style/poppins_medium_500_12"
+        android:layout_width="@dimen/_14sdp"
+        android:layout_height="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/bg_notification_count"
+        android:elevation="@dimen/_3sdp"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintCircle="@id/iv_filter_invoice"
+        app:layout_constraintCircleAngle="45"
+        app:layout_constraintCircleRadius="@dimen/_25sdp"
+        app:layout_constraintEnd_toEndOf="@id/iv_filter_invoice"
+        app:layout_constraintTop_toTopOf="@id/iv_filter_invoice" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_legend"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_legends"
+        app:layout_constraintBottom_toBottomOf="@id/tl_search"
+        app:layout_constraintEnd_toEndOf="@id/gl_right"
+        app:layout_constraintStart_toEndOf="@id/iv_filter_invoice"
+        app:layout_constraintTop_toTopOf="@id/tl_search" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/sr_invoice"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/gl_right"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/tl_search">
+
+        <com.app.knit.utility.customrecyclerview.CustomRecyclerView
+            android:id="@+id/rv_invoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/_100sdp"
+            app:list_orientation="vertical"
+            app:list_type="list"
+            android:visibility="gone"
+            android:overScrollMode="never"
+            app:loadmore_visibility="false"
+            app:loadmore_type="bottom"
+            app:pagination="true"
+            tools:listitem="@layout/item_invoice"
+            />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+  <!--  <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_no_data"
+        style="@style/poppins_medium_500_18"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/gl_right"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/tl_search"
+        android:text="@string/no_data_found"
+        android:visibility="v"
+        android:textColor="?colorTextView" />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_no_data"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_search"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/_80sdp"
+        >
+
+        <include
+            android:id="@+id/no_data"
+            layout="@layout/item_no_data" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

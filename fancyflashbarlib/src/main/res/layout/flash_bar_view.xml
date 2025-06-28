@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:layout_marginHorizontal="@dimen/_10sdp">
+
+    <LinearLayout
+        android:id="@+id/fbRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/fbContent"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_corner_red"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fbTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/nunito_bold_700"
+                android:visibility="gone"
+                tools:text="Title"
+                tools:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fbIcon"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_success"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fbMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold_700"
+                android:textColor="@color/color_text"
+                android:textSize="@dimen/_16ssp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:visibility="gone"
+                tools:text="A quick brown fox jumps of the lazy dog."
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

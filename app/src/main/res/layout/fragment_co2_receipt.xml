@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/ll_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.savingandrecpit.co2receipt.Co2ReceiptFragment">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_100sdp">
+                    <LinearLayout
+                        android:layout_marginVertical="@dimen/_30sdp"
+                        android:orientation="horizontal"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_calendar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_input_white_background_focused_shape"
+                            android:drawableEnd="@drawable/ic_arrow_down"
+                            android:drawablePadding="@dimen/_8sdp"
+                            android:text="2022"
+                            android:layout_weight="1"
+                            android:drawableTint="?colorTextView"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_6sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:textColor="?colorTextView"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_budget"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintTop_toTopOf="@id/tv_welcome_back"
+                             />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_all_types"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_input_white_background_focused_shape"
+                            android:drawableEnd="@drawable/ic_arrow_down"
+                            android:drawablePadding="@dimen/_8sdp"
+                            android:layout_marginHorizontal="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:text="@string/all_types"
+                            android:layout_weight="1"
+                            android:drawableTint="?colorTextView"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_6sdp"
+                            android:textColor="?colorTextView"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_budget"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_welcome_back"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_all_modes"
+                            android:layout_width="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_input_white_background_focused_shape"
+                            android:drawableEnd="@drawable/ic_arrow_down"
+                            android:drawablePadding="@dimen/_8sdp"
+                            android:layout_weight="1"
+                            android:text="@string/all_modes"
+                            android:drawableTint="?colorTextView"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_6sdp"
+                            android:textColor="?colorTextView"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_budget"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_welcome_back"
+                            />
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_emissions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_0sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_ess"
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="@dimen/_0sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:text="@string/co2_emission_by_vehicle_type"
+                            android:textColor="?colorChartYaixs"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!--<androidx.appcompat.widget.AppCompatTextView
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:alpha="0.4"
+                            android:text="@string/by_vehicle_type"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_ess"
+                            app:layout_constraintStart_toEndOf="@id/tv_ess"
+                            app:layout_constraintTop_toTopOf="@id/tv_ess" />-->
+
+                        <LinearLayout
+                            android:id="@+id/ll_emission"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_330sdp"
+                            android:layout_marginHorizontal="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:background="@drawable/bg_radius_10"
+                            android:backgroundTint="?colorCardView"
+                            android:elevation="@dimen/_2sdp"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_10sdp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_ess">
+
+                            <FrameLayout
+                                android:id="@+id/child_fragment_container"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_emission_no_data"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_ess">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_300sdp"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:elevation="@dimen/_1sdp"
+                                    android:scaleType="fitXY"
+                                    android:src="?imgNoDataEmission" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0sp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:elevation="@dimen/_5sdp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="?imgNoDataChatCenetr" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/poppins_medium_500_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:text="@string/no_data_source_for_this_report"
+                                    android:textColor="?colorCheckBoxProfileAddress" />
+
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_kilometer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_kilometer"
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:text="@string/kilometers"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:alpha="0.4"
+                            android:text="@string/by_vehicle_type"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_kilometer"
+                            app:layout_constraintStart_toEndOf="@id/tv_kilometer"
+                            app:layout_constraintTop_toTopOf="@id/tv_kilometer" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_kilometer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:background="@drawable/bg_radius_10"
+                            android:backgroundTint="?colorCardView"
+                            android:elevation="@dimen/_2sdp"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_kilometer">
+
+                            <FrameLayout
+                                android:id="@+id/child_fragment_container_kilometer"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_200sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:padding="@dimen/_10sdp">
+
+                            </FrameLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycle_view_kilo_meter"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_kilometer_no_data"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_kilometer">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:elevation="@dimen/_1sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="?imgNoDataKilometers" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0sp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:elevation="@dimen/_5sdp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="?imgNoDataChatCenetr" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/poppins_medium_500_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:text="@string/no_data_source_for_this_report"
+                                    android:textColor="?colorCheckBoxProfileAddress" />
+
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_co2_emi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_co2_emi"
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:text="@string/co2_emission_by_month_and_vehicle_type"
+                            android:textColor="?colorChartYaixs"
+                            android:maxLines="2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                       <!-- <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="@dimen/_0sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:alpha="0.4"
+                            android:text="@string/by_month_amp_vehicle_type"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_co2_emi"
+                            app:layout_constraintStart_toEndOf="@id/tv_co2_emi"
+                            app:layout_constraintTop_toTopOf="@id/tv_co2_emi" />-->
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_co2_emission"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/tv_co2_emi">
+
+                            <FrameLayout
+                                android:id="@+id/child_fragment_container_co2_emi"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_320sdp"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_2sdp"
+                                android:background="@drawable/bg_radius_10"
+                                android:backgroundTint="?colorCardView"
+                                android:elevation="@dimen/_2sdp"
+                                android:padding="@dimen/_10sdp">
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_co2_emission_no_data"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_co2_emi">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:elevation="@dimen/_1sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="?imgNoDataCo2Emission" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0sp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:elevation="@dimen/_5sdp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="?imgNoDataChatCenetr" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/poppins_medium_500_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:text="@string/no_data_source_for_this_report"
+                                    android:textColor="?colorCheckBoxProfileAddress" />
+
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_last_two_year_month"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_last_two_year_month"
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="@dimen/_0sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:text="@string/last_2_year_co2_emissions_by_month"
+                            android:textColor="?colorChartYaixs"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                       <!-- <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:alpha="0.4"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:text="@string/co2_emission_by_vehicle_type"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_last_two_year_month"
+                            app:layout_constraintStart_toEndOf="@id/tv_last_two_year_month"
+                            app:layout_constraintTop_toTopOf="@id/tv_last_two_year_month" />
+-->
+
+                        <LinearLayout
+                            android:id="@+id/ll_last_2_y_month"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_330sdp"
+                            android:layout_marginHorizontal="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:background="@drawable/bg_radius_10"
+                            android:backgroundTint="?colorCardView"
+                            android:clickable="false"
+                            android:elevation="@dimen/_2sdp"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_10sdp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_last_two_year_month">
+
+                            <FrameLayout
+                                android:id="@+id/child_fragment_container_last_two_year_month"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_320sdp">
+
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_last_2_y_month_no_data"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_last_two_year_month">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:elevation="@dimen/_1sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="?imgNoDataCo2Emission" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0sp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:elevation="@dimen/_5sdp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="?imgNoDataChatCenetr" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/poppins_medium_500_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:text="@string/no_data_source_for_this_report"
+                                    android:textColor="?colorCheckBoxProfileAddress" />
+
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_last_two_year_vehicle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_last_two_year_vehicle"
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="@dimen/_0sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:text="@string/last_2_year_co2_emissions_by_vehicle_type"
+                            android:textColor="?colorChartYaixs"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                      <!--  <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:alpha="0.4"
+                            android:text="@string/co2_emission_by_vehicle_type"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_last_two_year_vehicle"
+                            app:layout_constraintStart_toEndOf="@id/tv_last_two_year_vehicle"
+                            app:layout_constraintTop_toTopOf="@id/tv_last_two_year_vehicle" />
+-->
+
+                        <LinearLayout
+                            android:id="@+id/ll_last_2_y_vehicle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/tv_last_two_year_vehicle">
+
+                            <FrameLayout
+                                android:id="@+id/child_fragment_container_last_two_year_vehicle"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_320sdp"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_2sdp"
+                                android:background="@drawable/bg_radius_10"
+                                android:backgroundTint="?colorCardView"
+                                android:elevation="@dimen/_2sdp"
+                                android:padding="@dimen/_10sdp">
+
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_last_2_y_vehicle_no_data"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_last_two_year_vehicle">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                >
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:elevation="@dimen/_1sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="?imgNoDataCo2Emission" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0sp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:elevation="@dimen/_5sdp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="?imgNoDataChatCenetr" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/poppins_medium_500_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:text="@string/no_data_source_for_this_report"
+                                    android:textColor="?colorCheckBoxProfileAddress" />
+
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_yearly_co2_emission_trand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_30sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_yearly_co2_emission_trend"
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:text="@string/yearly_co"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:alpha="0.4"
+                            android:text="@string/emissions_trend"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_yearly_co2_emission_trend"
+                            app:layout_constraintStart_toEndOf="@id/tv_yearly_co2_emission_trend"
+                            app:layout_constraintTop_toTopOf="@id/tv_yearly_co2_emission_trend" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_yearly_trend"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/tv_yearly_co2_emission_trend">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_yearly_co2_trend"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:clipToPadding="false"
+                                android:paddingHorizontal="@dimen/_15sdp"
+                                tools:itemCount="1"
+                                tools:listitem="@layout/item_yearly_co2_trend" />
+                        </LinearLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_yearly_trend_no_data"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_yearly_co2_emission_trend">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:elevation="@dimen/_2sdp"
+                                android:orientation="vertical"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:elevation="@dimen/_5sdp"
+                                    android:scaleType="fitXY"
+                                    android:src="?imgNoDataYearlyTrend" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0sp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:elevation="@dimen/_5sdp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="?imgNoDataChatCenetr" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/poppins_medium_500_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:text="@string/no_data_source_for_this_report"
+                                    android:textColor="?colorCheckBoxProfileAddress" />
+
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_monthly_summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_monthly_summary"
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:text="@string/yearly_summary"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/poppins_semi_bold_600_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:alpha="0.4"
+                            android:text="@string/in_kg"
+                            android:textColor="?editTextColor"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_monthly_summary"
+                            app:layout_constraintStart_toEndOf="@id/tv_monthly_summary"
+                            app:layout_constraintTop_toTopOf="@id/tv_monthly_summary" />
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_monthly_summary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintTop_toBottomOf="@id/tv_monthly_summary">
+
+                            <FrameLayout
+                                android:id="@+id/child_fragment_container_monthly_summary"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_2sdp"
+                                android:background="@drawable/bg_radius_10"
+                                android:backgroundTint="@color/transparent"
+                                android:padding="@dimen/_10sdp">
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_monthly_summary_no_data"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_monthly_summary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:layout_marginVertical="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                >
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:elevation="@dimen/_1sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="?imgNoDataMonthlySummary" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0sp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_20sdp"
+                                android:elevation="@dimen/_5sdp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="?imgNoDataCenterMonthlySummary" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/poppins_medium_500_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:text="@string/no_data_found_"
+                                    android:textColor="?colorCheckBoxProfileAddress" />
+
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_lock_chart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0sdp"
+        android:background="?imgLockBgChart"
+        android:elevation="@dimen/_10sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.9"
+            android:background="?backgroundLockHome" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_lock_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:elevation="@dimen/_3sdp"
+            android:src="?imgLock_home"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_thank_you"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:fontFamily="@font/poppins_semi_bold_600"
+            android:gravity="center"
+            android:text="@string/thank_you"
+            android:textColor="?colorTextView"
+            android:textSize="@dimen/_25ssp"
+            app:layout_constraintTop_toBottomOf="@id/iv_lock_home" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_des"
+            style="@style/poppins_regular_400_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:alpha="0.7"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_30sdp"
+            android:textColor="?colorTextView"
+            app:layout_constraintTop_toBottomOf="@id/tv_thank_you" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_des1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_30sdp"
+            style="@style/poppins_regular_400_14"
+            android:textColor="?colorTextView"
+            android:alpha="0.7"
+            android:text="@string/currently_released_your_co2_survey"
+            app:layout_constraintTop_toBottomOf="@id/tv_des"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:src="@drawable/ic_home_arrow"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_des1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_contact_admin"
+            style="@style/blue_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:backgroundTint="?colorPrimary"
+            android:visibility="gone"
+            android:text="@string/contact_admin"
+            app:layout_constraintTop_toBottomOf="@id/tv_des" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
