@@ -10,11 +10,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,34 +29,23 @@ import de.fast2work.mobility.data.response.NotificationData
 import de.fast2work.mobility.data.response.PushNotification
 import de.fast2work.mobility.data.response.User
 import de.fast2work.mobility.databinding.FragmentHomeBinding
-import de.fast2work.mobility.ui.category.CategoryFragment
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingFragment
-import de.fast2work.mobility.ui.dashboard.DashboardActivity
 import de.fast2work.mobility.ui.dashboard.INDEX_CENTER_CO2
 import de.fast2work.mobility.ui.dashboard.INDEX_CONTACT_CO2
-import de.fast2work.mobility.ui.dashboard.INDEX_INVOICE
-import de.fast2work.mobility.ui.dticket.DTicketFragment
 import de.fast2work.mobility.ui.home.adapter.BudgetManagementAdapter
 import de.fast2work.mobility.ui.home.adapter.CategoryAdapter
-import de.fast2work.mobility.ui.invoice.invoicedetails.InvoiceDetailsFragment
-import de.fast2work.mobility.ui.profile.ProfileFragment
-import de.fast2work.mobility.ui.sidemenu.notification.NotificationFragment
-import de.fast2work.mobility.ui.upload.UploadInvoiceFragment
 import de.fast2work.mobility.utility.chart.notimportant.charting.animation.Easing
 import de.fast2work.mobility.utility.chart.notimportant.charting.data.PieData
 import de.fast2work.mobility.utility.chart.notimportant.charting.data.PieDataSet
 import de.fast2work.mobility.utility.chart.notimportant.charting.data.PieEntry
-import de.fast2work.mobility.utility.chart.notimportant.charting.utils.ColorTemplate
 import de.fast2work.mobility.utility.customview.ThreeItemsLinearLayoutManager
 import de.fast2work.mobility.utility.customview.toolbar.ToolbarConfig
 import de.fast2work.mobility.utility.extension.MM_FORMAT
 import de.fast2work.mobility.utility.extension.SERVER_FORMAT
 import de.fast2work.mobility.utility.extension.YYYY_FORMAT
 import de.fast2work.mobility.utility.extension.displayDate
-import de.fast2work.mobility.utility.extension.formatCurrency
 import de.fast2work.mobility.utility.extension.formatCurrencyNew
-import de.fast2work.mobility.utility.extension.getColorFromAttr
 import de.fast2work.mobility.utility.extension.imageTickTint
 import de.fast2work.mobility.utility.extension.parcelable
 import de.fast2work.mobility.utility.extension.setTint
@@ -68,32 +55,28 @@ import de.fast2work.mobility.utility.preference.EasyPref.Companion.USER_DATA
 import de.fast2work.mobility.utility.util.IConstants.Companion.BUNDLE_PUSH_NOTIFICATION
 import de.fast2work.mobility.utility.util.IConstantsIcon
 import de.fast2work.mobility.utility.util.LocalConfig
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import kotlin.math.log
 import kotlin.math.roundToInt
 
 
 /**
  *  Fragment used for HomeFragment
  */
-class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(HomeViewModel::class.java) {
+class HomeFragment :
+    BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(HomeViewModel::class.java) {
 
     private var categoryAdapter: CategoryAdapter? = null
     private var budgetManagementAdapter: BudgetManagementAdapter? = null
     private var userData: User? = User()
     private var clickRotation = false
-    private var budgetItemData: BudgetItem?=null
-    var isWidthSet=false
-    var activeTicketData:ActiveTicket?=null
+    private var budgetItemData: BudgetItem? = null
+    var isWidthSet = false
+    var activeTicketData: ActiveTicket? = null
 
     //    var tenant:TenantInfoModel? =null
     companion object {
@@ -103,15 +86,20 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         const val IS_PROFILE_COMPLETE = "isProfileComplete"
 
 
-        fun newInstance(pushNotificationData: PushNotification? /*isProfileComplete: String*/) = HomeFragment().apply {
-            this.arguments = Bundle().apply {
-                pushNotificationData?.let { this.putParcelable(BUNDLE_PUSH_NOTIFICATION, it) }
-                //this.putString(IS_PROFILE_COMPLETE,isProfileComplete)
+        fun newInstance(pushNotificationData: PushNotification? /*isProfileComplete: String*/) =
+            HomeFragment().apply {
+                this.arguments = Bundle().apply {
+                    pushNotificationData?.let { this.putParcelable(BUNDLE_PUSH_NOTIFICATION, it) }
+                    //this.putString(IS_PROFILE_COMPLETE,isProfileComplete)
+                }
             }
-        }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return generateBinding(FragmentHomeBinding.inflate(inflater), container)
     }
 
@@ -142,7 +130,17 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         val month = cal[Calendar.MONTH]
         viewModel.categoryDate = ("$year-0${month + 1}-01")
         viewModel.callBudgetGroupApi(true, viewModel.categoryDate)
-        binding!!.tvCalendar.text = viewModel.categoryDate.displayDate(SERVER_FORMAT, SimpleDateFormat("MMM yyyy", if (BaseApplication.languageSharedPreference.getLanguagePref(EasyPref.CURRENT_LANGUAGE, "").equals("de", true)) Locale.GERMAN else Locale.ENGLISH))
+        binding!!.tvCalendar.text = viewModel.categoryDate.displayDate(
+            SERVER_FORMAT,
+            SimpleDateFormat(
+                "MMM yyyy",
+                if (BaseApplication.languageSharedPreference.getLanguagePref(
+                        EasyPref.CURRENT_LANGUAGE,
+                        ""
+                    ).equals("de", true)
+                ) Locale.GERMAN else Locale.ENGLISH
+            )
+        )
     }
 
     override fun attachObservers() {
@@ -157,15 +155,17 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
             }
         }
         viewModel.budgetGroupListLiveData.observe(this) {
-            binding!!.llBudgetValue.isVisible=true
+            binding!!.llBudgetValue.isVisible = true
             if (it.data?.data?.isNotEmpty() == true) {
                 viewModel.categoryList.clear()
-                it.data?.data?.filter { i -> i.status.lowercase() == "active" }?.let { it1 -> viewModel.categoryList.addAll(it1) }/* binding!!.ivNext.alpha=0.5f
+                it.data?.data?.filter { i -> i.status.lowercase() == "active" }
+                    ?.let { it1 -> viewModel.categoryList.addAll(it1) }/* binding!!.ivNext.alpha=0.5f
                     binding!!.ivNext.isEnabled=false*/
                 //binding?.ivNext?.alpha = 1.0f
                 binding!!.ivNext.isVisible = categoryAdapter?.itemCount!! > 3
                 if (viewModel.categoryList.size != 0) {
-                    val selectedPosition = BaseApplication.sharedPreference.getPref("categoryPosition", 0)
+                    val selectedPosition =
+                        BaseApplication.sharedPreference.getPref("categoryPosition", 0)
                     viewModel.categoryList.forEachIndexed { index, budgetItem ->
                         budgetItemData = budgetItem
                         if (index == 0 && selectedPosition == 0) {
@@ -173,13 +173,21 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                             setProgressbar(budgetItem)
                             viewModel.categoryTypeName = budgetItem.budgetGroupName
                             viewModel.budgetGroupId = budgetItem.budgetGroupId.toBlankString()
-                            viewModel.callBudgetGroupInfoApi(false, budgetItem.budgetGroupId.toBlankString(), viewModel.categoryDate)
+                            viewModel.callBudgetGroupInfoApi(
+                                false,
+                                budgetItem.budgetGroupId.toBlankString(),
+                                viewModel.categoryDate
+                            )
                         } else if (index == selectedPosition) {
                             budgetItem.isSelect = true
                             setProgressbar(budgetItem)
                             viewModel.categoryTypeName = budgetItem.budgetGroupName
                             viewModel.budgetGroupId = budgetItem.budgetGroupId.toBlankString()
-                            viewModel.callBudgetGroupInfoApi(false, budgetItem.budgetGroupId.toBlankString(), viewModel.categoryDate)
+                            viewModel.callBudgetGroupInfoApi(
+                                false,
+                                budgetItem.budgetGroupId.toBlankString(),
+                                viewModel.categoryDate
+                            )
                         }
 
                     }
@@ -218,34 +226,50 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         viewModel.errorLiveData.observe(this) {
             showErrorMessage(it)
         }
-        viewModel.activeTicketInfoLiveData.observe(this){
-            Log.e("", "attachObservers:${it.data?.activeTicket?.ticketId} ", )
-             activeTicketData=it.data?.activeTicket
-            val activityTicket=ActiveTicket()
-            activityTicket.ticketId= activeTicketData?.ticketId
-            activityTicket.couponId= activeTicketData?.couponId
-            activityTicket.orderId= activeTicketData?.orderId.toString()
-            activityTicket.subscriptionId= activeTicketData?.subscriptionId.toString()
-            activityTicket.subscriptionExpiredAt= activeTicketData?.subscriptionExpiredAt.toString()
-            activityTicket.eligibleForBuy= activeTicketData?.eligibleForBuy == true
-            activityTicket.status= activeTicketData?.status.toString()
+        viewModel.activeTicketInfoLiveData.observe(this) {
+            Log.e("", "attachObservers:${it.data?.activeTicket?.ticketId} ")
+            activeTicketData = it.data?.activeTicket
+            val activityTicket = ActiveTicket()
+            activityTicket.ticketId = activeTicketData?.ticketId
+            activityTicket.couponId = activeTicketData?.couponId
+            activityTicket.orderId = activeTicketData?.orderId.toString()
+            activityTicket.subscriptionId = activeTicketData?.subscriptionId.toString()
+            activityTicket.subscriptionExpiredAt =
+                activeTicketData?.subscriptionExpiredAt.toString()
+            activityTicket.eligibleForBuy = activeTicketData?.eligibleForBuy == true
+            activityTicket.status = activeTicketData?.status.toString()
             BaseApplication.sharedPreference.setPref(EasyPref.activeTicket, activityTicket)
-            if (activeTicketData?.eligibleForBuy==true){
+            if (activeTicketData?.eligibleForBuy == true) {
                 BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.DISABLE)
-            }else{
+            } else {
                 when (activeTicketData?.status) {
                     "active" -> {
-                        BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.ACTIVATED)
+                        BaseApplication.sharedPreference.setPref(
+                            EasyPref.D_TICKET,
+                            IConstantsIcon.ACTIVATED
+                        )
                     }
+
                     "inactive" -> {
-                        BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.PENDING)
+                        BaseApplication.sharedPreference.setPref(
+                            EasyPref.D_TICKET,
+                            IConstantsIcon.PENDING
+                        )
 
                     }
+
                     "cancelled" -> {
-                        BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.cancelled)
+                        BaseApplication.sharedPreference.setPref(
+                            EasyPref.D_TICKET,
+                            IConstantsIcon.cancelled
+                        )
                     }
+
                     else -> {
-                        BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.DISABLE)
+                        BaseApplication.sharedPreference.setPref(
+                            EasyPref.D_TICKET,
+                            IConstantsIcon.DISABLE
+                        )
                     }
                 }
             }
@@ -263,16 +287,21 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
             //semiCircleProgressView.setStrokeWidth(40f)
             //semiCircleProgressView.setProgress(budgetItem.getBudgetProgressValue())
             //semiCircleProgressView.setAnimation()
-            tvTotalBudget.text = budgetItem.totalAllocatedBudget.formatCurrencyNew(budgetItem.symbol)
-            tvUnutilizedBudget.text = budgetItem.totalRemainingBudget.formatCurrencyNew(budgetItem.symbol)
+            tvTotalBudget.text =
+                budgetItem.totalAllocatedBudget.formatCurrencyNew(budgetItem.symbol)
+            tvUnutilizedBudget.text =
+                budgetItem.totalRemainingBudget.formatCurrencyNew(budgetItem.symbol)
 
             tvAvailableAmount.setTextColor(Color.parseColor(budgetItem.amountInformation!!.colors!!.availableColor))
-            tvUsedAmount.setTextColor(Color.parseColor(budgetItem.amountInformation!!.colors!!.usedColor))
-            tvPendingAmount.setTextColor(Color.parseColor(budgetItem.amountInformation!!.colors!!.pendingColor))
+            tvUsedAmount.setTextColor(Color.parseColor(budgetItem.amountInformation.colors!!.usedColor))
+            tvPendingAmount.setTextColor(Color.parseColor(budgetItem.amountInformation.colors!!.pendingColor))
 
-            tvAvailableAmountValue.text = budgetItem.amountInformation!!.availableAmount.formatCurrencyNew(budgetItem.symbol)
-            tvPendingAmountValue.text = budgetItem.amountInformation!!.pendingAmount.formatCurrencyNew(budgetItem.symbol)
-            tvUsedAmountValue.text = budgetItem.amountInformation!!.usedAmount.formatCurrencyNew(budgetItem.symbol)
+            tvAvailableAmountValue.text =
+                budgetItem.amountInformation.availableAmount.formatCurrencyNew(budgetItem.symbol)
+            tvPendingAmountValue.text =
+                budgetItem.amountInformation.pendingAmount.formatCurrencyNew(budgetItem.symbol)
+            tvUsedAmountValue.text =
+                budgetItem.amountInformation.usedAmount.formatCurrencyNew(budgetItem.symbol)
 
             setPieData(budgetItem)
 
@@ -283,64 +312,61 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
      * This method contains code to setPieData progress chart sem circle
      *
      */
-    private fun setPieData(budgetItem: BudgetItem){
+    private fun setPieData(budgetItem: BudgetItem) {
         val pieEntries: ArrayList<PieEntry> = ArrayList<PieEntry>()
         val label = "type"
 
 
         if (!isWidthSet) {
-            isWidthSet=true
+            isWidthSet = true
             val width = (binding!!.PieData.getWidth() * 1.35f)
             val height = (binding!!.PieData.getHeight() * 1.35f)
 
-            val params = binding!!.PieData.getLayoutParams()
+            val params = binding!!.PieData.layoutParams
             params.width = width.toInt()
             params.height = height.toInt()
             binding!!.PieData.setLayoutParams(params)
-            binding!!.PieData.setExtraOffsets( 10f, 0f, 10f,  -150f)
+            binding!!.PieData.setExtraOffsets(10f, 0f, 10f, -150f)
         }
         binding!!.PieData.isDrawHoleEnabled = true
         binding!!.PieData.setHoleColor(Color.TRANSPARENT)
         binding!!.PieData.setTransparentCircleColor(Color.TRANSPARENT)
 
-        binding!!.PieData.setTransparentCircleRadius(80f);
+        binding!!.PieData.transparentCircleRadius = 80f
         binding!!.PieData.maxAngle = 180f
         binding!!.PieData.rotationAngle = 180f
-        binding!!.PieData.setCenterTextOffset(0f,-20f)
-        binding!!.PieData.animateY(1000,Easing.EaseInOutCubic)
+        binding!!.PieData.setCenterTextOffset(0f, -20f)
+        binding!!.PieData.animateY(1000, Easing.EaseInOutCubic)
         binding!!.PieData.legend.isEnabled = false
-        binding!!.PieData.holeRadius=80f
+        binding!!.PieData.holeRadius = 80f
 
 
-        binding!!.PieData.setRotationEnabled(false)
-        binding!!.PieData.setHighlightPerTapEnabled(false)
+        binding!!.PieData.isRotationEnabled = false
+        binding!!.PieData.isHighlightPerTapEnabled = false
         //initializing data
         val colors = ArrayList<Int>()
         val typeAmountMap: MutableMap<String, Int> = HashMap()
-        if (budgetItem.amountInformation?.availableAmount?.toInt() ==0 && budgetItem.amountInformation?.usedAmount?.toInt() ==0 && budgetItem.amountInformation?.pendingAmount?.toInt() ==0){
-            typeAmountMap["availableAmount"] =100
-            if (BaseApplication.themeValue== Configuration.UI_MODE_NIGHT_YES) {
+        if (budgetItem.amountInformation?.availableAmount?.toInt() == 0 && budgetItem.amountInformation.usedAmount?.toInt() == 0 && budgetItem.amountInformation.pendingAmount?.toInt() == 0) {
+            typeAmountMap["availableAmount"] = 100
+            if (BaseApplication.themeValue == Configuration.UI_MODE_NIGHT_YES) {
                 colors.add(Color.parseColor("#4D274072"))
-            }else {
+            } else {
                 colors.add(Color.parseColor("#D9D9D9"))
             }
-        }else {
+        } else {
             typeAmountMap["availableAmount"] =
-                budgetItem.amountInformation!!.availableAmount!!.roundToInt()
-            typeAmountMap["usedAmount"] = budgetItem.amountInformation!!.usedAmount!!.roundToInt()
+                budgetItem.amountInformation!!.availableAmount.roundToInt()
+            typeAmountMap["usedAmount"] = budgetItem.amountInformation.usedAmount.roundToInt()
             typeAmountMap["pendingAmount"] =
-                budgetItem.amountInformation!!.pendingAmount!!.roundToInt()
+                budgetItem.amountInformation.pendingAmount.roundToInt()
 
-            colors.add(Color.parseColor(budgetItem.amountInformation!!.colors!!.availableColor))
-            colors.add(Color.parseColor(budgetItem.amountInformation!!.colors!!.usedColor))
-            colors.add(Color.parseColor(budgetItem.amountInformation!!.colors!!.pendingColor))
+            colors.add(Color.parseColor(budgetItem.amountInformation.colors!!.availableColor))
+            colors.add(Color.parseColor(budgetItem.amountInformation.colors!!.usedColor))
+            colors.add(Color.parseColor(budgetItem.amountInformation.colors!!.pendingColor))
         }
 
 
-
         //initializing colors for the entries
-
-
 
 
         //input data and fit data into pie chart entry
@@ -358,13 +384,13 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         //binding!!.chart.setRotationAngle(0f)
         // enable rotation of the chart by touch
         // enable rotation of the chart by touch
-        binding!!.PieData.setDrawSliceText(false); // To remove slice text
-        binding!!.PieData.setDrawMarkers(false); // To remove markers when click
-        binding!!.PieData.setDrawEntryLabels(false); // To remove labels from piece of pie
-        binding!!.PieData.getDescription().setEnabled(false); //
+        binding!!.PieData.setDrawSliceText(false) // To remove slice text
+        binding!!.PieData.setDrawMarkers(false) // To remove markers when click
+        binding!!.PieData.setDrawEntryLabels(false) // To remove labels from piece of pie
+        binding!!.PieData.description.isEnabled = false //
         pieDataSet.setDrawValues(false)
         //providing color list for coloring different entries
-        pieDataSet.setColors(colors)
+        pieDataSet.colors = colors
 
         //grouping the data set from entry to chart
         val pieData: PieData = PieData(pieDataSet)
@@ -383,28 +409,34 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
      */
     override fun initComponents() {
 //        tenant=(BaseApplication.tenantSharedPreference.getTenantPrefModel(EasyPref.TENANT_DATA, TenantInfoModel::class.java) )
-        if (BaseApplication.sharedPreference.getPrefModel(USER_DATA, User::class.java)?.isProfileComplete == "0") {
-            pushFragment(ProfileFragment())
+        if (BaseApplication.sharedPreference.getPrefModel(
+                USER_DATA,
+                User::class.java
+            )?.isProfileComplete == "0"
+        ) {
         }
 
         if (tenantInfoData?.tenantInfo?.enabledServices.equals(LocalConfig.co2_management, true)) {
             binding!!.clLockHome.isVisible = true
             binding!!.clMainHomeInvoice.isVisible = false
             binding!!.swipeRefresh.isEnabled = false
-            if (isFirstTimeLoad){
+            if (isFirstTimeLoad) {
                 switchTab(INDEX_CENTER_CO2)
             }
         } else {
             if (isFirstTimeLoad) {
-                binding!!.llBudgetValue.isVisible=false
+                binding!!.llBudgetValue.isVisible = false
                 setCalenderDate()
             }
             binding!!.swipeRefresh.isEnabled = true
             binding!!.clLockHome.isVisible = false
             binding!!.clMainHomeInvoice.isVisible = true
         }
-        viewModel.pushNotification = if (requireArguments().containsKey(BUNDLE_PUSH_NOTIFICATION)) requireArguments().parcelable<PushNotification>(BUNDLE_PUSH_NOTIFICATION)
-        else null
+        viewModel.pushNotification =
+            if (requireArguments().containsKey(BUNDLE_PUSH_NOTIFICATION)) requireArguments().parcelable<PushNotification>(
+                BUNDLE_PUSH_NOTIFICATION
+            )
+            else null
 
 
         userData = BaseApplication.sharedPreference.getPrefModel(USER_DATA, User::class.java)
@@ -415,40 +447,53 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
             binding?.tvWelcomeBack?.text = getString(R.string.welcome_, userData?.firstName)
         }
         binding?.ivLockHome?.setTint(tenantInfoData?.brandingInfo?.primaryColor.toBlankString())
-        binding?.btnContactAdmin?.backgroundTintList = ColorStateList.valueOf(Color.parseColor(tenantInfoData?.brandingInfo?.primaryColor.toBlankString()))
+        binding?.btnContactAdmin?.backgroundTintList =
+            ColorStateList.valueOf(Color.parseColor(tenantInfoData?.brandingInfo?.primaryColor.toBlankString()))
         binding!!.noData.ivNoData.imageTickTint(tenantInfoData?.brandingInfo?.primaryColor)
         binding!!.noData.ivNoDataBg.imageTickTint(tenantInfoData?.brandingInfo?.primaryColor)
 
         setDTicket()
     }
 
-     private fun setDTicket() {
-         if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")== IConstantsIcon.PENDING){
-             binding!!.ivAddDTicket.isVisible=false
-         }else{
+    private fun setDTicket() {
+        if (BaseApplication.sharedPreference.getPref(
+                EasyPref.D_TICKET,
+                ""
+            ) == IConstantsIcon.PENDING
+        ) {
+            binding!!.ivAddDTicket.isVisible = false
+        } else {
 
-             if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")==IConstantsIcon.ACTIVATED){
-                 binding!!.ivAddDTicket.isVisible=false
-             }else if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")==IConstantsIcon.cancelled){
-                 binding!!.ivAddDTicket.isVisible=false
-             }else{
-                 //binding!!.ivAddDTicket.isVisible = true
-             }
-             /*if (BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.ticketId.isNullOrEmpty()) {
-                 if (BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.couponId.isNullOrEmpty()) {
-                     if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")== IConstantsIcon.DISABLE){
-                         binding!!.ivAddDTicket.isVisible=true
-                     }else {
-                         binding!!.ivAddDTicket.isVisible = false
-                     }
-                 } else {
-                     binding!!.ivAddDTicket.isVisible=true
-                 }
+            if (BaseApplication.sharedPreference.getPref(
+                    EasyPref.D_TICKET,
+                    ""
+                ) == IConstantsIcon.ACTIVATED
+            ) {
+                binding!!.ivAddDTicket.isVisible = false
+            } else if (BaseApplication.sharedPreference.getPref(
+                    EasyPref.D_TICKET,
+                    ""
+                ) == IConstantsIcon.cancelled
+            ) {
+                binding!!.ivAddDTicket.isVisible = false
+            } else {
+                //binding!!.ivAddDTicket.isVisible = true
+            }
+            /*if (BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.ticketId.isNullOrEmpty()) {
+                if (BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.couponId.isNullOrEmpty()) {
+                    if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")== IConstantsIcon.DISABLE){
+                        binding!!.ivAddDTicket.isVisible=true
+                    }else {
+                        binding!!.ivAddDTicket.isVisible = false
+                    }
+                } else {
+                    binding!!.ivAddDTicket.isVisible=true
+                }
 
-             } else {
-                 binding!!.ivAddDTicket.isVisible=false
-             }*/
-         }
+            } else {
+                binding!!.ivAddDTicket.isVisible=false
+            }*/
+        }
 
     }
 
@@ -472,12 +517,28 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 }
             }
             tvCalendar.setOnClickListener {
-                val pd = de.fast2work.mobility.utility.customview.MonthYearPickerDialog(viewModel.categoryDate.displayDate(SERVER_FORMAT, MM_FORMAT).toInt(), viewModel.categoryDate.displayDate(SERVER_FORMAT, YYYY_FORMAT).toInt())
+                val pd = de.fast2work.mobility.utility.customview.MonthYearPickerDialog(
+                    viewModel.categoryDate.displayDate(
+                        SERVER_FORMAT,
+                        MM_FORMAT
+                    ).toInt(),
+                    viewModel.categoryDate.displayDate(SERVER_FORMAT, YYYY_FORMAT).toInt()
+                )
                 pd.setListener { _, p1, p2, _ ->
                     viewModel.categoryDate = "$p1-${String.format("%02d", p2)}-01"
                     //showToast("$p1-${String.format("%02d", p2)}-01")
                     viewModel.callBudgetGroupApi(true, viewModel.categoryDate)
-                    binding!!.tvCalendar.text = viewModel.categoryDate.displayDate(SERVER_FORMAT, SimpleDateFormat("MMM yyyy", if (BaseApplication.languageSharedPreference.getLanguagePref(EasyPref.CURRENT_LANGUAGE, "").equals("de", true)) Locale.GERMAN else Locale.ENGLISH))
+                    binding!!.tvCalendar.text = viewModel.categoryDate.displayDate(
+                        SERVER_FORMAT,
+                        SimpleDateFormat(
+                            "MMM yyyy",
+                            if (BaseApplication.languageSharedPreference.getLanguagePref(
+                                    EasyPref.CURRENT_LANGUAGE,
+                                    ""
+                                ).equals("de", true)
+                            ) Locale.GERMAN else Locale.ENGLISH
+                        )
+                    )
                 }
                 pd.show(parentFragmentManager, "MonthYearPickerDialog")
             }
@@ -491,7 +552,6 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
             }
             ivAddDTicket.clickWithDebounce {
                 BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.DISABLE)
-                pushFragment(DTicketFragment())
             }
         }
     }
@@ -504,12 +564,20 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 showNotificationIcon = true
                 showLogoIcon = true
                 showViewLine = true
-                if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")==IConstantsIcon.ACTIVATED){
-                   // showFilterHappening=true
-                }else if (BaseApplication.sharedPreference.getPref(EasyPref.D_TICKET, "")==IConstantsIcon.cancelled){
+                if (BaseApplication.sharedPreference.getPref(
+                        EasyPref.D_TICKET,
+                        ""
+                    ) == IConstantsIcon.ACTIVATED
+                ) {
+                    // showFilterHappening=true
+                } else if (BaseApplication.sharedPreference.getPref(
+                        EasyPref.D_TICKET,
+                        ""
+                    ) == IConstantsIcon.cancelled
+                ) {
                     //showFilterHappening=true
-                }else{
-                   // showFilterHappening=false
+                } else {
+                    // showFilterHappening=false
                 }
             })
 
@@ -517,20 +585,27 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 toggleDrawer()
             }
             it.ivNotification.clickWithDebounce {
-                pushFragment(NotificationFragment())
             }
-            it.ivFilterHappening.clickWithDebounce{
-                MobilityboxTicketCode(BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.ticketId.toString()).fetchTicket({ ticket->
-                    if(ticket.validity() == MobilityboxTicketValidity.VALID) {
+            it.ivFilterHappening.clickWithDebounce {
+                MobilityboxTicketCode(
+                    BaseApplication.sharedPreference.getPrefModel(
+                        EasyPref.activeTicket,
+                        ActiveTicket::class.java
+                    )?.ticketId.toString()
+                ).fetchTicket({ ticket ->
+                    if (ticket.validity() == MobilityboxTicketValidity.VALID) {
                         val ticketBottomSheet = MobilityboxBottomSheetFragment.newInstance(
                             ticket,
-                            BaseApplication.sharedPreference.getPrefModel(EasyPref.activeTicket, ActiveTicket::class.java)?.ticketId.toString()
+                            BaseApplication.sharedPreference.getPrefModel(
+                                EasyPref.activeTicket,
+                                ActiveTicket::class.java
+                            )?.ticketId.toString()
                         )
 
                         ticketBottomSheet.show(requireActivity().supportFragmentManager, "ticket")
                     }
                     //ticketBottomSheet(childFragmentManager, "Ticket Inspection View")
-                },{error->
+                }, { error ->
 
                 })
             }
@@ -541,31 +616,39 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerView() {
         binding?.apply {
-            categoryAdapter = CategoryAdapter(requireContext(), viewModel.categoryList) { view, model, position ->
-                when (view.id) {
-                    R.id.tv_item -> {
-                        Log.e("", "initRecyclerView======: ${position}=======${viewModel.categoryList.size - 1}")
-                        if (viewModel.categoryList.size - 1 == position) {
-                            clickRotation = true
-                            ivNext.rotation = 180f
-                        } else {
-                            ivNext.rotation = 0f
-                            clickRotation = false
+            categoryAdapter =
+                CategoryAdapter(requireContext(), viewModel.categoryList) { view, model, position ->
+                    when (view.id) {
+                        R.id.tv_item -> {
+                            Log.e(
+                                "",
+                                "initRecyclerView======: ${position}=======${viewModel.categoryList.size - 1}"
+                            )
+                            if (viewModel.categoryList.size - 1 == position) {
+                                clickRotation = true
+                                ivNext.rotation = 180f
+                            } else {
+                                ivNext.rotation = 0f
+                                clickRotation = false
+                            }
+                            viewModel.categoryList.forEach {
+                                it.isSelect = false
+                            }
+                            BaseApplication.sharedPreference.setPref("categoryPosition", position)
+                            model.isSelect = true
+                            setProgressbar(model)
+                            viewModel.categoryTypeName = ""
+                            viewModel.categoryTypeName = model.budgetGroupName
+                            viewModel.budgetGroupId = model.budgetGroupId.toBlankString()
+                            viewModel.callBudgetGroupInfoApi(
+                                true,
+                                model.budgetGroupId.toBlankString(),
+                                viewModel.categoryDate
+                            )
+                            categoryAdapter?.notifyDataSetChanged()
                         }
-                        viewModel.categoryList.forEach {
-                            it.isSelect = false
-                        }
-                        BaseApplication.sharedPreference.setPref("categoryPosition", position)
-                        model.isSelect = true
-                        setProgressbar(model)
-                        viewModel.categoryTypeName = ""
-                        viewModel.categoryTypeName = model.budgetGroupName
-                        viewModel.budgetGroupId = model.budgetGroupId.toBlankString()
-                        viewModel.callBudgetGroupInfoApi(true, model.budgetGroupId.toBlankString(), viewModel.categoryDate)
-                        categoryAdapter?.notifyDataSetChanged()
                     }
                 }
-            }
             rvCtg.layoutManager = ThreeItemsLinearLayoutManager(requireContext())
             rvCtg.adapter = categoryAdapter
             binding!!.rvCtg.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -589,11 +672,13 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
     @SuppressLint("NotifyDataSetChanged")
     private fun initBudgetManagementRecyclerView() {
         binding?.apply {
-            budgetManagementAdapter = BudgetManagementAdapter(requireContext(), viewModel.budgetManagementInfoList) { view, model, position ->
+            budgetManagementAdapter = BudgetManagementAdapter(
+                requireContext(),
+                viewModel.budgetManagementInfoList
+            ) { view, model, position ->
                 when (view.id) {
                     R.id.cl_mail -> {
                         Log.e("==========", "model: $model")
-                        pushFragment(CategoryFragment.newInstance(model, model.categoryId, viewModel.categoryTypeName, viewModel.budgetGroupId, viewModel.categoryDate))
                     }
                 }
             }
@@ -613,50 +698,73 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                 when (viewModel.pushNotification!!.refType) {
                     NotificationData.INVOICE_DETAIL -> {
                         requireArguments().clear()
-                        pushFragment(InvoiceDetailsFragment.newInstance(viewModel.pushNotification?.refId!!))
                         return true
                     }
 
                     NotificationData.UPLOAD_INVOICE -> {
                         requireArguments().clear()
-                        pushFragment(UploadInvoiceFragment())
                         return true
                     }
 
                     NotificationData.INVOICE_CO2_REQUIRED -> {
                         requireArguments().clear()
-                        pushFragment(InvoiceDetailsFragment.newInstance(viewModel.pushNotification?.refId!!))
                         return true
                     }
-                    NotificationData.D_TICKET ->{
-                        BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.ACTIVATED)
-                        val activityTicket=ActiveTicket()
-                        activityTicket.ticketId= viewModel.pushNotification!!.ticketId
-                        activityTicket.couponId= viewModel.pushNotification!!.couponId
-                        activityTicket.orderId= viewModel.pushNotification!!.orderId
-                        activityTicket.subscriptionId= viewModel.pushNotification!!.subscriptionId
-                        activityTicket.subscriptionExpiredAt= viewModel.pushNotification!!.subscriptionExpiredAt
-                        activityTicket.eligibleForBuy=viewModel.pushNotification!!.eligibleForBuy
-                        activityTicket.status=viewModel.pushNotification!!.status
 
-                        BaseApplication.sharedPreference.setPref(EasyPref.activeTicket, activityTicket)
+                    NotificationData.D_TICKET -> {
+                        BaseApplication.sharedPreference.setPref(
+                            EasyPref.D_TICKET,
+                            IConstantsIcon.ACTIVATED
+                        )
+                        val activityTicket = ActiveTicket()
+                        activityTicket.ticketId = viewModel.pushNotification!!.ticketId
+                        activityTicket.couponId = viewModel.pushNotification!!.couponId
+                        activityTicket.orderId = viewModel.pushNotification!!.orderId
+                        activityTicket.subscriptionId = viewModel.pushNotification!!.subscriptionId
+                        activityTicket.subscriptionExpiredAt =
+                            viewModel.pushNotification!!.subscriptionExpiredAt
+                        activityTicket.eligibleForBuy = viewModel.pushNotification!!.eligibleForBuy
+                        activityTicket.status = viewModel.pushNotification!!.status
 
-                        if (activityTicket.eligibleForBuy){
-                            BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.DISABLE)
-                        }else{
+                        BaseApplication.sharedPreference.setPref(
+                            EasyPref.activeTicket,
+                            activityTicket
+                        )
+
+                        if (activityTicket.eligibleForBuy) {
+                            BaseApplication.sharedPreference.setPref(
+                                EasyPref.D_TICKET,
+                                IConstantsIcon.DISABLE
+                            )
+                        } else {
                             when (activityTicket.status) {
                                 "active" -> {
-                                    BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.ACTIVATED)
+                                    BaseApplication.sharedPreference.setPref(
+                                        EasyPref.D_TICKET,
+                                        IConstantsIcon.ACTIVATED
+                                    )
                                 }
+
                                 "inactive" -> {
-                                    BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.PENDING)
+                                    BaseApplication.sharedPreference.setPref(
+                                        EasyPref.D_TICKET,
+                                        IConstantsIcon.PENDING
+                                    )
 
                                 }
+
                                 "cancelled" -> {
-                                    BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.cancelled)
+                                    BaseApplication.sharedPreference.setPref(
+                                        EasyPref.D_TICKET,
+                                        IConstantsIcon.cancelled
+                                    )
                                 }
+
                                 else -> {
-                                    BaseApplication.sharedPreference.setPref(EasyPref.D_TICKET, IConstantsIcon.DISABLE)
+                                    BaseApplication.sharedPreference.setPref(
+                                        EasyPref.D_TICKET,
+                                        IConstantsIcon.DISABLE
+                                    )
                                 }
                             }
                         }
@@ -664,7 +772,6 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
                         requireArguments().clear()
                         Handler(Looper.getMainLooper()).postDelayed({
                             setDTicket()
-                            pushFragment(DTicketFragment())
                         }, 1000)
 
                         return true
@@ -696,7 +803,8 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
         if (updateNotificationCount.pushNotificationCount!! > 0) {
             binding!!.toolbar.tvNotificationCount.visibility = View.VISIBLE
             binding!!.toolbar.ivNotification.visibility = View.VISIBLE
-            binding!!.toolbar.tvNotificationCount.visibility = updateNotificationCount.pushNotificationCount ?: 0
+            binding!!.toolbar.tvNotificationCount.visibility =
+                updateNotificationCount.pushNotificationCount ?: 0
         } else {
             binding!!.toolbar.tvNotificationCount.visibility = View.GONE
             binding!!.toolbar.ivNotification.visibility = View.VISIBLE
@@ -705,13 +813,13 @@ class HomeFragment : BaseVMBindingFragment<FragmentHomeBinding, HomeViewModel>(H
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun notificationDTicket(notificationData: NotificationDTicketData) {
-        if (notificationData.refType==NotificationData.D_TICKET){
-            Log.e("", "notificationDTicket: ${notificationData}", )
+        if (notificationData.refType == NotificationData.D_TICKET) {
+            Log.e("", "notificationDTicket: ${notificationData}")
 
 
-            if (notificationData.ticketId.isEmpty()){
+            if (notificationData.ticketId.isEmpty()) {
                 binding!!.toolbar.ivFilterHappening.visibility = View.GONE
-            }else{
+            } else {
                 binding!!.toolbar.ivFilterHappening.visibility = View.VISIBLE
             }
         }

@@ -62,19 +62,19 @@ android {
     flavorDimensions += "environment"
     productFlavors {
         create("staging") {
-            buildConfigField("String", "BASE_URL", "\"https://api.f2w-budget.de/\"")
+            buildConfigField("String", "BASE_URL", "\"http://127.0.0.1:8000/\"")
             dimension = "environment"
         }
         create("qa") {
-            buildConfigField("String", "BASE_URL", "\"https://api.f2wdev.eu/\"")
+            buildConfigField("String", "BASE_URL", "\"\"")
             dimension = "environment"
         }
         create("uat") {
-            buildConfigField("String", "BASE_URL", "\"https://api.f2wmobi.de/\"")
+            buildConfigField("String", "BASE_URL", "\"\"")
             dimension = "environment"
         }
         create("production") {
-            buildConfigField("String", "BASE_URL", "\"https://api.mobi-portal.de/\"")
+            buildConfigField("String", "BASE_URL", "\"\"")
             dimension = "environment"
         }
     }

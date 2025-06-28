@@ -24,12 +24,8 @@ import androidx.core.view.isVisible
 import de.fast2work.mobility.R
 import de.fast2work.mobility.data.request.SignUpReq
 import de.fast2work.mobility.databinding.ActivitySignUpBinding
-import de.fast2work.mobility.ui.authentication.login.LoginActivity
-import de.fast2work.mobility.ui.authentication.signup.bottom.TermAndConditionBottomSheetFragment
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingActivity
-import de.fast2work.mobility.ui.profile.bottom.CountryCodeBottomSheetFragment
-import de.fast2work.mobility.ui.sidemenu.staticpage.StaticPageFragment
 import de.fast2work.mobility.utility.customview.AsteriskPasswordTransformationMethod
 import de.fast2work.mobility.utility.customview.countrypicker.CountryPicker
 import de.fast2work.mobility.utility.customview.toolbar.ToolbarConfig
@@ -63,8 +59,7 @@ class SignUpActivity :
                 "",
                 il = object : DialogUtil.IL {
                     override fun onSuccess() {
-                        startActivity(LoginActivity.newTaskIntent(this@SignUpActivity))
-                        finish()
+
                     }
 
                     override fun onCancel(isNeutral: Boolean) {
@@ -113,7 +108,6 @@ class SignUpActivity :
 
         binding.tvNote.text = spannableNote
         setBoldAndColorSpannable1(binding.tvSignup, getString(R.string.login))
-        viewModel.callStaticPageApi(1)
         setThemeForView(binding.btnSignUp)
         /*binding.ivCountryCodeImageSet.setImageBitmap(
             CountryPicker.loadImageFromAssets(
@@ -193,21 +187,7 @@ class SignUpActivity :
      * This method contains openCountrySheetBottomSheet
      *
      */
-    private fun openCountrySheetBottomSheet() {
-        val dialog = CountryCodeBottomSheetFragment.newInstance()
-        dialog.sendClickListener = {
-            binding.ivCountryCodeImageSet.setImageBitmap(
-                CountryPicker.loadImageFromAssets(
-                    this,
-                    it.countryCode.toBlankString()
-                )
-            )
-            viewModel.countryCode = it.iso?.replace(Regex("[\\-+]"), "").toBlankString()
-            Log.e("===========", " viewModel.countryCode:: ${it.iso}")
-            //binding!!.telPhoneNo.setText(it.iso+userData?.mobileNo)
-        }
-        dialog.show(supportFragmentManager, "")
-    }
+
 
     private fun setToolbar() {
         binding.customToolbar.let {
@@ -347,28 +327,6 @@ class SignUpActivity :
                     override fun onClick(p0: View) {
                         when (portion) {
                             getString(R.string.terms_condition_sign_up) -> {
-                                if (BaseApplication.languageSharedPreference.getLanguagePref(
-                                        EasyPref.CURRENT_LANGUAGE, "").equals("de", true)){
-                                    val dialog =
-                                        TermAndConditionBottomSheetFragment.newInstance(viewModel.staticPage,viewModel.termsAccepted,viewModel.employeeReportPdfFileDE)
-                                    dialog.sendClickListener = {
-                                        BaseApplication.sharedPreference.setPref("term", it)
-                                        viewModel.termsAccepted = it
-                                        binding.ivAccepted.isVisible = true
-                                    }
-
-                                    dialog.show(supportFragmentManager, "")
-                                }else{
-                                    val dialog =
-                                        TermAndConditionBottomSheetFragment.newInstance(viewModel.staticPage,viewModel.termsAccepted,viewModel.employeeReportPdfFile)
-                                    dialog.sendClickListener = {
-                                        BaseApplication.sharedPreference.setPref("term", it)
-                                        viewModel.termsAccepted = it
-                                        binding.ivAccepted.isVisible = true
-                                    }
-
-                                    dialog.show(supportFragmentManager, "")
-                                }
 
                             }
                         }
@@ -413,8 +371,7 @@ class SignUpActivity :
                     override fun onClick(p0: View) {
                         when (portion) {
                             getString(R.string.login) -> {
-                                startActivity(LoginActivity.newTaskIntent(this@SignUpActivity))
-                                finish()
+
                             }
                         }
                     }

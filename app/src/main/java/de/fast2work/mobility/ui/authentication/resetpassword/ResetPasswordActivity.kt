@@ -13,7 +13,6 @@ import androidx.core.view.isVisible
 import dagger.hilt.android.AndroidEntryPoint
 import de.fast2work.mobility.R
 import de.fast2work.mobility.databinding.ActivityResetPasswordBinding
-import de.fast2work.mobility.ui.authentication.login.LoginActivity
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingActivity
 import de.fast2work.mobility.utility.customview.AsteriskPasswordTransformationMethod
@@ -56,9 +55,7 @@ class ResetPasswordActivity : BaseVMBindingActivity<ActivityResetPasswordBinding
             override fun handleOnBackPressed() {
                 // Handle the back button press here
                 // For example, you can navigate back or show a confirmation dialog
-                startActivity(Intent(this@ResetPasswordActivity, LoginActivity::class.java).addFlags(
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
-                finish()
+
             }
         }
 
@@ -126,9 +123,7 @@ class ResetPasswordActivity : BaseVMBindingActivity<ActivityResetPasswordBinding
             })
 
             it.ivBack.clickWithDebounce {
-                startActivity(Intent(this@ResetPasswordActivity, LoginActivity::class.java).addFlags(
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
-                finish()
+
             }
         }
     }
@@ -148,9 +143,7 @@ class ResetPasswordActivity : BaseVMBindingActivity<ActivityResetPasswordBinding
             getString(R.string.your_password_has_been_updated_successfully_login_with_the_new_password_to_continue),
             getString(R.string.continue_to_login), "", il = object : DialogUtil.IL {
                 override fun onSuccess() {
-                    startActivity(Intent(this@ResetPasswordActivity, LoginActivity::class.java).addFlags(
-                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
-                    finish()
+
                 }
 
                 override fun onCancel(isNeutral: Boolean) {

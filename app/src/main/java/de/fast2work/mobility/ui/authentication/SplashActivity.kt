@@ -9,13 +9,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import dagger.hilt.android.AndroidEntryPoint
-import de.fast2work.mobility.BuildConfig
 import de.fast2work.mobility.R
+import de.fast2work.mobility.UI1.login1.LoginScreen
+import de.fast2work.mobility.UI1.login1.LoginScreenViewModel
 import de.fast2work.mobility.data.response.AppUpdate
 import de.fast2work.mobility.data.response.PushNotification
 import de.fast2work.mobility.databinding.ActivitySplashBinding
-import de.fast2work.mobility.ui.authentication.login.LoginViewModel
-import de.fast2work.mobility.ui.authentication.url.TenantLoginActivity
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseVMBindingActivity
 import de.fast2work.mobility.ui.dashboard.DashboardActivity
@@ -33,7 +32,7 @@ import de.fast2work.mobility.utility.util.IConstants.Companion.BUNDLE_PUSH_NOTIF
  */
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
-class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginViewModel>(LoginViewModel::class.java) {
+class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginScreenViewModel>(LoginScreenViewModel::class.java) {
     private val SPLASH_DURATION = 500L
     private var appUpdate:AppUpdate?=null
     var isFirst=false
@@ -54,8 +53,11 @@ class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginViewMod
      *
      */
     override fun initComponents() {
-        setDefaultLanguage()
-        viewModel.callAppVersionApi()
+        Handler(Looper.getMainLooper()).postDelayed({
+            redirectToLoginActivity()
+        }, SPLASH_DURATION)
+        //setDefaultLanguage()
+        //viewModel.callAppVersionApi()
        // moveForward()
     }
 
@@ -92,7 +94,7 @@ class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginViewMod
      */
     private fun redirectToLoginActivity() {
         BaseApplication.tenantSharedPreference.clearAll()
-        val intent = Intent(this, TenantLoginActivity::class.java)
+        val intent = Intent(this, LoginScreen::class.java)
         startActivity(intent)
         finish()
     }
@@ -110,9 +112,7 @@ class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginViewMod
 
     override fun onResume() {
         super.onResume()
-        if (isFirst) {
-            viewModel.callAppVersionApi()
-        }
+
     }
 
     /**
@@ -120,24 +120,7 @@ class SplashActivity : BaseVMBindingActivity<ActivitySplashBinding, LoginViewMod
      *
      */
     override fun attachObservers() {
-        viewModel.appVersionLiveData.observe(this){
-            if (it.data != null){
-                if (isVersionGreater(it.data?.appVersion.toBlankString(), BuildConfig.VERSION_NAME)) {
-                    appUpdate=it.data
-                    checkAppUpdate(it.data!!)
-                }else{
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        moveForward()
-                        isFirst=false
-                    }, SPLASH_DURATION)
-                }
-            }else{
-                Handler(Looper.getMainLooper()).postDelayed({
-                    moveForward()
-                    isFirst=false
-                }, SPLASH_DURATION)
-            }
-        }
+
         viewModel.errorLiveData.observe(this){
             redirectToLoginActivity()
         }

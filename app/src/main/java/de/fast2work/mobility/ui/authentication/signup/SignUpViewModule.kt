@@ -10,10 +10,10 @@ import de.fast2work.mobility.data.request.SignUpReq
 import de.fast2work.mobility.data.response.StaticPage
 import de.fast2work.mobility.data.response.User
 import de.fast2work.mobility.di.helper.AuthenticationRepoHelper
+import de.fast2work.mobility.ui.authentication.AuthenticationRepository
 import de.fast2work.mobility.ui.core.BaseApplication
 import de.fast2work.mobility.ui.core.BaseViewModel
 import de.fast2work.mobility.ui.dashboard.DashBoardRepository
-import de.fast2work.mobility.ui.sidemenu.SideMenuRepository
 import de.fast2work.mobility.utility.extension.toBlankString
 import de.fast2work.mobility.utility.helper.SingleLiveData
 import de.fast2work.mobility.utility.preference.EasyPref
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpViewModule @Inject constructor(private val repository: AuthenticationRepoHelper,private val repository1: SideMenuRepository) : BaseViewModel() {
+class SignUpViewModule @Inject constructor(private val repository: AuthenticationRepoHelper,private val repository1: AuthenticationRepository) : BaseViewModel() {
 
     var signUpLiveData = SingleLiveData<WSObjectResponse<JsonElement>>()
     var staticPageLiveData = MutableLiveData<WSObjectResponse<StaticPage>>()
@@ -56,16 +56,5 @@ class SignUpViewModule @Inject constructor(private val repository: Authenticatio
         }
     }
 
-    fun callStaticPageApi(pageIndex:Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            invalidateLoading(true)
-            repository1.callStaticPageApi(pageIndex, onResult = {
-                invalidateLoading(false)
-                staticPageLiveData.postValue(it)
-            }, onFailure = {
-                invalidateLoading(false)
-                staticPageLiveData.postValue(WSObjectResponse())
-            })
-        }
-    }
+
 }
