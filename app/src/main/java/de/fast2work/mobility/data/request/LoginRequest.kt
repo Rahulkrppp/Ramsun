@@ -6,5 +6,5 @@ data class LoginRequest(
     @SerializedName("email") var email: String = "",
     @SerializedName("password") var password: String = "",
     @SerializedName("deviceType") val deviceType : String = "android",
-    @SerializedName("deviceId") var deviceId: String = ""
+    @SerializedName("username") var deviceId: String = "aakash"
 )

@@ -74,7 +74,7 @@ class ApiClientModule {
                     builder1.header("authorization", "Bearer " + BaseApplication.sharedPreference.getPref(EasyPref.USER_ACCESS_TOKEN, ""))
                 }
                 //builder1.header("Accept-Language", BaseApplication.sharedPreference.getPref(EasyPref.PARAM_LANGUAGE, ""))
-                builder1.header("Accept-Language", BaseApplication.languageSharedPreference.getLanguagePref(EasyPref.CURRENT_LANGUAGE, ""))
+                builder1.header("ngrok-skip-browser-warning", "1")
                 val request = builder1.build()
                 chain.proceed(request)
             }).addInterceptor(DataConverterInterceptor()).addResponseInterceptor(object : ResponseInterceptor.OnResponseCallback {

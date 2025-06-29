@@ -82,7 +82,7 @@ interface ApiService {
     @GET("tenantApi/tenant/view/{tenantName}")
     suspend fun callGetTenantThemeApi(@Path("tenantName") tenantName: String): Response<WSObjectResponse<TenantInfoModel>>
 
-    @POST("userApi/auth/login")
+    @POST("api/auth/login/")
     suspend fun callLoginApi(@Body params: LoginRequest): Response<WSObjectResponse<User>>
 
     @POST("userApi/auth/verifyTwoFactorAuthCode")

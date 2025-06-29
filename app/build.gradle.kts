@@ -62,7 +62,7 @@ android {
     flavorDimensions += "environment"
     productFlavors {
         create("staging") {
-            buildConfigField("String", "BASE_URL", "\"http://127.0.0.1:8000/\"")
+            buildConfigField("String", "BASE_URL", "\"https://fe22-2409-40c1-2105-4664-f49a-7587-65db-daf1.ngrok-free.app/\"")
             dimension = "environment"
         }
         create("qa") {
